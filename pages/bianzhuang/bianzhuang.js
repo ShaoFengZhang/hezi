@@ -42,8 +42,7 @@ Page({
 			return;
 		}
 		this.setData({
-			picNowSelcet: index,
-			
+			picNowSelcet: index,	
 		});
 	},
 

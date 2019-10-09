@@ -20,7 +20,7 @@
                     <view catchtap="goToPage" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="*this">
 						<image src="{{item.icon}}" />
 						<view>{{item.text}}</view>
-						<navigator wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate"  app-id="{{item.mini_id}}" version="release"></navigator>
+						<navigator catchtap="catchtap" wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate"  app-id="{{item.mini_id}}" version="release"></navigator>
 					</view>
                 </swiper-item>
             </block>

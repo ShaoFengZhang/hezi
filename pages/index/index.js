@@ -21,7 +21,7 @@ Page({
 				{
 					icon: 'https://duanju.58100.com/upload/new/bianzhuang.png',
 					text: '疯狂变装',
-					path: '',
+					path: '/pages/bianzhuang/bianzhuang',
 					type: 'inside'
 				},
 				{
@@ -79,6 +79,8 @@ Page({
 			'newuser': wx.getStorageSync('ifnewUser')
 		}, function (res) {
 		})
-	}
+	},
+
+	catchtap:function(){}
 
 })

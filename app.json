@@ -10,7 +10,8 @@
 		"pages/malamaking/malamaking",
 		"pages/malaresults/malaresults",
 		"pages/kouturesults/kouturesults",
-		"pages/malaclassdetails/malaclassdetails"
+		"pages/malaclassdetails/malaclassdetails",
+		"pages/bianzhuang/bianzhuang"
 	],
 	"window": {
 		"navigationStyle": "custom"

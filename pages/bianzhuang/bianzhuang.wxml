@@ -13,7 +13,7 @@
     </view>
 
 
-    <view class="classifyView">
+    <view class="classifyView" catchtap="catchtap">
 
         <view class="categoryTxtView">
             <scroll-view scroll-x style="height: 88rpx;width:500rpx;">
@@ -43,9 +43,4 @@
         </view>
     </view>
 
-</view>
-
-<view class="bg" wx:if="{{ifshowcropper}}">
-    <top-bar id="topBarView" comtype="{{2}}"></top-bar>
-    <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindimageload="loadimage" bind:clickcut="clickcut"></image-cropper>
 </view>
