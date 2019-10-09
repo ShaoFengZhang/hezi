@@ -26,7 +26,7 @@
 
                 <!-- 暂时没有数据 -->
                 <view class='nocom' wx:if="{{!item.content.length}}">
-                    <image src='/assets/app/nodata.png' />
+                    <image src='https://duanju.58100.com/upload/new/nodata.png' />
                     <view>暂时还没有数据亲~</view>
                 </view>
 

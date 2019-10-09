@@ -1,6 +1,7 @@
 {
 	"backgroundColor": "#000000",
 	"disableSwipeBack": true,
+	"disableScroll": true,
 	"usingComponents": {
 		"top-bar": "/plug/cropper"
 	}

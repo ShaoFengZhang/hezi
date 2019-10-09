@@ -9,7 +9,8 @@
 		"pages/cutout/cutout",
 		"pages/malamaking/malamaking",
 		"pages/malaresults/malaresults",
-		"pages/kouturesults/kouturesults"
+		"pages/kouturesults/kouturesults",
+		"pages/malaclassdetails/malaclassdetails"
 	],
 	"window": {
 		"navigationStyle": "custom"

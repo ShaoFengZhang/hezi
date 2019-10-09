@@ -1,0 +1,26 @@
+<view class='bg' wx:if="{{apiHaveLoad}}">
+    <top-bar id="topBarView" comtype="{{2}}" colortype="{{1}}"></top-bar>
+    <view style="height:{{scrollHeight-10}}px">
+
+        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="onReachBottom">
+            <view class="bgBox">
+                <view class="mubanItem" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="gotomaking">
+                    <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                </view>
+
+                <!-- 暂时没有数据 -->
+                <view class='nocom' wx:if="{{!contentArr.length}}">
+                    <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                    <view>暂时还没有数据亲~</view>
+                </view>
+
+                <!-- 加载中 -->
+                <view class='loading' wx:if="{{ifloadtxt}}">
+                    加载中 . . .
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+
+
+</view>

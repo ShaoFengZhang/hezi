@@ -3,6 +3,7 @@
 	"navigationBarTitleText": "会员中心",
 	"backgroundColor": "#000000",
 	"onReachBottomDistance": 0,
+	"disableScroll": true,
 	"usingComponents": {
 		"top-bar": "/plug/cropper"
 	}
