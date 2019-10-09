@@ -1,0 +1,35 @@
+.bg {
+    background-color: #6e1fd3;
+    color: #fff;
+    min-height: 100vh;
+    background-image: url('https://duanju.58100.com/upload/new/5.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topdestxt {
+    width: 100%;
+    text-align: center;
+    font-size: 48rpx;
+    margin-top: 102rpx;
+    font-family: PingFangSC;
+}
+
+.gifView, .gifView image {
+    width: 520rpx;
+    height: 738rpx;
+}
+
+.gifView {
+    background-color: gray;
+    margin: 56rpx auto 0;
+}
+
+.uploadbtn, .uploadbtn image {
+    width: 520rpx;
+    height: 160rpx;
+}
+
+.uploadbtn{
+    margin: 62rpx auto 0;
+}

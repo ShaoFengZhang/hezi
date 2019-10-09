@@ -1,0 +1,19 @@
+<view class='bg'>
+
+    <top-bar id="topBarView" comtype="{{2}}" colortype="{{2}}"></top-bar>
+    <view class="posterView">
+        <image mode="widthFix" src="{{posturl}}" />
+    </view>
+
+    <view class="btnView">
+        <view class="shareBtn">
+            <image src="https://duanju.58100.com/upload/new/shareBtn.png" />
+            <button id="shareBtn"  open-type="share"></button>
+        </view>
+
+        <view class="uploadbtn" catchtap="uploadImage">
+           <image src="https://duanju.58100.com/upload/new/downBtn.png" />
+        </view>
+    </view>
+
+</view>

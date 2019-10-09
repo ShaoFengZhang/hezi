@@ -1,0 +1,44 @@
+<view class="bg">
+    <top-bar id="topBarView" style="z-index:9999;"></top-bar>
+    <view class="myscore">
+
+        <image src="https://duanju.58100.com/upload/new/scorebg.png" />
+
+        <view class="scoreNumView">
+            <view style="font-size:32rpx;">可用积分</view>
+            <view style="font-size:48rpx;font-weight:bold;">{{userScore}}</view>
+
+        </view>
+
+    </view>
+
+
+    <view class="jifenhuoqu">积分获取</view>
+
+    <view class="shareAd adview">
+
+        <view class="adIcon">
+            <image src="https://duanju.58100.com/upload/new/sharebg.png" />
+        </view>
+
+        <view class="adtitle">
+            <view style="color:#000;font-size:36rpx;margin-bottom:10rpx;">邀请好友</view>
+            <view style="color:#999;font-size:28rpx;">邀请好友获取100积分</view>
+        </view>
+
+        <view class="adbtn">立即邀请</view>
+
+        <button id="shareBtn" open-type="share"></button>
+
+    </view>
+
+    <view class="openVip" catchtap="gotoVip" wx:if="{{!huiyuanhide}}">
+        <image src="https://duanju.58100.com/upload/new/openvip.png" />
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
+    </view>
+
+
+</view>

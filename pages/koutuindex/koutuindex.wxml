@@ -1,0 +1,14 @@
+<view class="bg" >
+    <top-bar id="topBarView" comtype="{{2}}" colortype="{{2}}"></top-bar>
+
+    <view class="topdestxt">一键人像抠图  百变照片风格</view>
+
+    <view class="gifView">
+        <image src="https://duanju.58100.com/upload/new/homegif.gif" />
+    </view>
+
+    <view class="uploadbtn" catchtap="cutOutshangchuan">
+        <image src="https://duanju.58100.com/upload/new/shangchuan.png" />
+    </view>
+
+</view>

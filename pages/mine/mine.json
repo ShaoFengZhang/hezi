@@ -1,0 +1,9 @@
+{
+	"navigationBarTextStyle": "black",
+	"backgroundColor": "#000000",
+	"disableSwipeBack": true,
+	"onReachBottomDistance": 0,
+	"usingComponents": {
+		"top-bar": "/plug/cropper"
+	}
+}

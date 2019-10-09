@@ -1,0 +1,30 @@
+<view class="bg">
+    <top-bar id="topBarView" comtype="{{1}}"></top-bar>
+
+    <view class="TopSiperView">
+        <swiper class="topSwiper" indicator-dots="{{false}}" autoplay="{{false}}">
+            <block >
+                <swiper-item>
+                    <view class="swiperItem">
+						<image src="https://duanju.58100.com/upload/new/top.png" />
+					</view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+	<view class="centerSiperView">
+        <swiper class="centerSwiper" indicator-dots="{{false}}" autoplay="{{false}}">
+            <block wx:for="{{itemArr}}" wx:key="*this">
+                <swiper-item class="centerswiperItem">
+                    <view catchtap="goToPage" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="*this">
+						<image src="{{item.icon}}" />
+						<view>{{item.text}}</view>
+						<navigator wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate"  app-id="{{item.mini_id}}" version="release"></navigator>
+					</view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+</view>

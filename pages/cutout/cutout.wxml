@@ -1,0 +1,85 @@
+<view class="bg" wx:if="{{1}}">
+
+    <top-bar id="topBarView" style="z-index:9999;" comtype="{{2}}" colortype="{{2}}"></top-bar>
+
+    <view id="caozuo">
+        <image src="{{dituimg}}"  bindload="imagebindload"/>
+    </view>
+
+    <view class='contentWarp' style="left:{{posLeft}}px;top:{{posTop}}px">
+        <movable-area class="canMoveArea" >
+            <movable-view animation="{{false}}" style='width:{{picinfo.width}}px;height:{{picinfo.height}}px;'  direction="all" scale scale-min="0.5" scale-max="4" scale-value="{{scale}}" x="{{dx}}" y="{{dy}}" bindchange="onChange" bindscale="onScale">
+                <image class="peopleImg" src="{{peopleUrl}}" style='width:{{picinfo.width}}px;height:{{picinfo.height}}px;'/>
+            </movable-view>
+        </movable-area>
+    </view>
+
+
+    <view class="classBotView">
+
+        <view class="txtClass">
+            <scroll-view scroll-x style="height: 56rpx;">
+                <view class="scroll-view">
+                    <view class="classTxtItem {{txtNowIndex==index?'selectTxt':null}}" wx:for="{{classArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="txtClassClicl">{{item.txt}}</view>
+                </view>
+            </scroll-view>
+        </view>
+
+        <view class="classPicList">
+            <scroll-view scroll-left="{{scrollLeft}}" scroll-x style="height: 122rpx;" bindscrolltolower="bindscrolltolower">
+                <view class="scroll-view">
+                    <view class="classPicItem {{index==picNowSelcet?'slectPic':null}}" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="classPicClick">
+                        <image mode="scaleToFill" src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+    <view class="makeBtn">
+
+        <view class="changePic" style="margin-right:106rpx;" catchtap="cutOutshangchuan">
+            <image src="https://duanju.58100.com/upload/new/huantu.png" />
+            <text>换图</text>
+        </view>
+
+        <view class="makingView" catchtap="generatePoster">
+            <image src="https://duanju.58100.com/upload/new/chenggong.png" />
+            <text>生成</text>
+        </view>
+
+        <view class="wushijifen" wx:if="{{!ifVip}}">-50积分</view>
+
+    </view>
+
+    <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hidejsfenMask">
+
+        <view class="maskBody" style="height:{{huiyuanhide?580:710}}rpx">
+
+            <view style="color:#D0021B;font-size:40rpx;margin-top:60rpx;">你的积分不够啦！</view>
+            <view style="color:#282828;font-size:28rpx;margin-top:12rpx;">你可以通过以下方式获得积分</view>
+
+            <view class="adView">
+
+                <view class="shareBtn">
+                    <image src="https://duanju.58100.com/upload/new/sharebg.png" />
+                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取100积分</view>
+                    <button id="shareBtn" open-type="share"></button>
+                </view>
+
+                <view class="videoAd" catchtap="adShow">
+                    <image src="https://duanju.58100.com/upload/new/videoAd.png" />
+                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取100积分</view>
+                </view>
+
+            </view>
+
+            <view class="maskBotAdView" catchtap="gotovip" wx:if="{{!huiyuanhide}}">
+                <image style="width:520rpx;height:156rpx;" src="https://duanju.58100.com/upload/new/maskBotAd.png" />
+            </view>
+
+        </view>
+
+    </view>
+
+</view>

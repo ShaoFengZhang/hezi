@@ -1,0 +1,47 @@
+.topBarView {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 9999;
+	background-color:#fff;
+}
+
+.mineView, .mineView image {
+    width: 64rpx;
+    height: 64rpx;
+}
+
+.mineView {
+    position: absolute;
+    left: 42rpx;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.btnBox{
+	width: 158rpx;
+	height: 56rpx;
+	position: absolute;
+    left: 42rpx;
+	overflow: hidden;
+	background-size: 158rpx 56rpx;
+	background-repeat: no-repeat;
+	background-image: url("https://duanju.58100.com/upload/new/home.png");
+	display: flex
+}
+
+.btnBox view{
+	width: 79rpx;
+	height: 56rpx;
+}
+
+.wxGameTititle{
+	width: 100%;
+	height: 64rpx;
+	text-align: center;
+	font-size: 34rpx;
+	line-height: 64rpx;
+	color: #000;
+	font-weight: bold;
+}
+

@@ -1,0 +1,20 @@
+<view class='topBarView' wx:if="{{comtype==1}}" style="height:{{topbarHeight}}px;">
+
+    <view  class="mineView" style="bottom:{{posibottom}}px" catchtap="gotominepage">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
+
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px"> 点点抠图 </view>
+
+</view>
+
+<view class='topBarView' wx:if="{{comtype==2}}" style="height:{{topbarHeight}}px;background-color:{{colortype==1?'#fff':'#000'}}">
+
+    <view  class="btnBox" style="bottom:{{posibottom}}px;background-image: url({{colortype==1?bgl:bg2}});" >
+		<view catchtap="backtopPage"></view>
+		<view catchtap="backHome"></view>
+    </view>
+
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px"> 点点抠图 </view>
+
+</view>

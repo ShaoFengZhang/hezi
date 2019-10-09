@@ -1,0 +1,57 @@
+/**index.wxss**/
+
+.TopSiperView {
+    width: 100%;
+    height: 302rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rpx;
+}
+
+.topSwiper, .topSwiper image {
+    width: 690rpx;
+    height: 302rpx;
+}
+
+.centerSiperView {
+    width: 100%;
+    height: 498rpx;
+    margin-top: 30rpx;
+    box-sizing: border-box;
+    padding: 0 54rpx;
+}
+
+.centerSwiper {
+    width: 100%;
+    height: 498rpx;
+}
+
+.centerswiperItem {
+    width: 100%;
+    height: 498rpx;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.swiperItemChild {
+    width: 188rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #666;
+    margin-bottom: 34rpx;
+    margin-right: 36rpx;
+	position: relative;
+}
+
+.swiperItemChild:nth-child(3n) {
+    margin-right: 0rpx;
+}
+
+.swiperItemChild image {
+    width: 188rpx;
+    height: 188rpx;
+    vertical-align: top;
+    margin: 0;
+}

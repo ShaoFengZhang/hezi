@@ -1,0 +1,35 @@
+<view class="bg" wx:if="{{!ifshowcropper}}">
+    <top-bar id="topBarView" comtype="{{2}}" colortype="{{2}}"></top-bar>
+    <view class="topImage" style="height:{{viewHeight}}px">
+
+        <view class="imageVIew" style="height:{{viewHeight}}px">
+            <image mode="widthFix" src="{{imgUrl}}" />
+        </view>
+
+    </view>
+
+    <view class="makeBtn">
+
+        <view wx:if="{{imgtype!=16}}" class="uploadBtn" catchtap="shangchuan">
+            上传1张照片 立即生成
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+        </view>
+        <view wx:if="{{imgtype==16}}" class="uploadBtn" catchtap="cutOutshangchuan">
+            上传人像照片 立即生成
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+        </view>
+
+    </view>
+
+</view>
+
+<view class="bg" wx:if="{{ifshowcropper}}">
+    <top-bar id="topBarView" comtype="{{2}}" colortype="{{2}}"></top-bar>
+    <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindimageload="loadimage" bind:clickcut="clickcut"></image-cropper>
+</view>

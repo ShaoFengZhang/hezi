@@ -1,0 +1,35 @@
+.bg {
+    background-color: #000;
+    min-height: 100vh;
+}
+
+.posterView{
+    margin: 20rpx auto 0;
+}
+
+.posterView,.posterView image {
+    width: 600rpx;
+    height: 804rpx;
+}
+
+.btnView{
+    width: 100%;
+    height: 130rpx;
+    box-sizing: border-box;
+    padding: 0 76rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 118rpx;
+}
+
+.shareBtn{
+    position: relative;
+}
+
+.uploadbtn image,.shareBtn image{
+    width: 328rpx;
+    height: 130rpx;
+
+}
+

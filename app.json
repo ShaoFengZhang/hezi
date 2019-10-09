@@ -1,0 +1,26 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/malaindex/malaindex",
+		"pages/mine/mine",
+		"pages/jifen/jifen",
+		"pages/vipHome/vipHome",
+		"pages/koutuindex/koutuindex",
+		"pages/cutout/cutout",
+		"pages/malamaking/malamaking",
+		"pages/malaresults/malaresults",
+		"pages/kouturesults/kouturesults"
+	],
+	"window": {
+		"navigationStyle": "custom"
+	},
+	"navigateToMiniProgramAppIdList": [
+		"wx9e2a0a0dc2556902",
+		"wxbf288d85dbc7d2a6"
+	],
+	"networkTimeout": {
+		"request": 20000
+	},
+	"debug": false,
+	"sitemapLocation": "sitemap.json"
+}

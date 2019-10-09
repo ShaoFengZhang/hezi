@@ -1,0 +1,113 @@
+.bg {
+    background-color: #f3f3f3;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.initPage, .handleView {
+    width: 100%;
+    height: 100vh;
+    background-color: #f3f3f3;
+}
+
+.initPage image {
+    width: 200rpx;
+    height: 170rpx;
+}
+
+.uploadView {
+    text-align: center;
+    margin-top: 352rpx;
+}
+
+.uploadTxt {
+    text-align: center;
+    font-size: 40rpx;
+    color: #8e8e93;
+    margin-top: 36rpx;
+}
+
+/* 底部分类 */
+
+.classifyView {
+    width: 100%;
+    height: 240rpx;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.categoryTxtView {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 28rpx;
+    color: #5f6070;
+    overflow: hidden;
+    white-space: nowrap;
+	box-sizing: border-box;
+	padding: 0 20rpx;
+	display: flex;
+	align-items: center;
+}
+
+.scroll-view {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.classTxtItem {
+    margin-right: 24rpx;
+    color: #5F6070;
+    font-size: 28rpx;
+	padding: 0 10rpx;
+}
+
+.selectTxt{
+	color: #F80050;
+}
+
+.categoryPicView{
+	width: 100%;
+    height: 140rpx;
+    overflow: hidden;
+    white-space: nowrap;
+	box-sizing: border-box;
+	padding: 0 20rpx;
+}
+
+.classPicItem{
+	margin-right: 20rpx;
+	border-radius:4rpx;
+}
+
+.classPicItem image {
+    width: 116rpx;
+    height: 116rpx;
+    vertical-align: top;
+	border-radius:4rpx;
+}
+
+.slectPic image {
+    border: 4rpx solid #F80D7F;
+}
+
+.changePic,.changePic image{
+	width: 140rpx;
+	height: 140rpx;
+}
+
+.makeBtnView{
+	font-size: 32rpx;
+	color: #282828;
+	margin-left: 60rpx;
+}
+
+.makeBtnView image{
+	width: 72rpx;
+	height: 72rpx;
+	vertical-align: middle;
+}
