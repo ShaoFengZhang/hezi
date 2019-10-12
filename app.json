@@ -11,7 +11,8 @@
 		"pages/malaresults/malaresults",
 		"pages/kouturesults/kouturesults",
 		"pages/malaclassdetails/malaclassdetails",
-		"pages/bianzhuang/bianzhuang"
+		"pages/bianzhuang/bianzhuang",
+		"pages/tiezhi/tiezhi"
 	],
 	"window": {
 		"navigationStyle": "custom"

@@ -8,7 +8,7 @@ App({
 		// 获取系统信息
 		wx.getSystemInfo({
 			success(res) {
-				console.log(res)
+				// console.log(res)
 				_this.pix = res.pixelRatio;
 				_this.windowHeight = res.windowHeight;
 				_this.windowwidth = res.windowWidth;

@@ -21,6 +21,7 @@
 						<image src="{{item.icon}}" />
 						<view>{{item.text}}</view>
 						<navigator catchtap="catchtap" wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate"  app-id="{{item.mini_id}}" version="release"></navigator>
+						<view class="mask"  catchtap="showmask" wx:if="{{item.type=='jingqingqidai'}}"></view>
 					</view>
                 </swiper-item>
             </block>

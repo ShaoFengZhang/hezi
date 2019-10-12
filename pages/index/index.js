@@ -14,7 +14,7 @@ Page({
 				},
 				{
 					icon: 'https://duanju.58100.com/upload/new/zhuangbi.png',
-					text: '装逼神器',
+					text: '早安日签',
 					path: '/pages/malaindex/malaindex',
 					type: 'inside'
 				},
@@ -23,6 +23,12 @@ Page({
 					text: '疯狂变装',
 					path: '/pages/bianzhuang/bianzhuang',
 					type: 'inside'
+				},
+				{
+					icon: 'https://duanju.58100.com/upload/new/jingqingqidai.png',
+					text: '贴纸相机',
+					path: '/pages/tiezhi/tiezhi',
+					type: 'inside',
 				},
 				{
 					icon: 'https://duanju.58100.com/upload/new/lianxing.png',
@@ -44,7 +50,7 @@ Page({
 
 	onLoad: function (options) {
 		loginApi.wxlogin(app).then(function (value) {
-			console.log(value)
+			// console.log(value)
 			if (options && options.uid) {
 				_this.fenxiangAddScore(options.uid);
 			}
@@ -81,6 +87,10 @@ Page({
 		})
 	},
 
-	catchtap:function(){}
+	catchtap:function(){},
+
+	showmask:function(){
+		util.toast('敬请期待~')
+	}
 
 })
