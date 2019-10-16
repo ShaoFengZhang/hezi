@@ -63,13 +63,13 @@
 
                 <view class="shareBtn">
                     <image src="https://duanju.58100.com/upload/new/sharebg.png" />
-                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取100积分</view>
+                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取50积分</view>
                     <button id="shareBtn" open-type="share"></button>
                 </view>
 
                 <view class="videoAd" catchtap="adShow">
                     <image src="https://duanju.58100.com/upload/new/videoAd.png" />
-                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取100积分</view>
+                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取50积分</view>
                 </view>
 
             </view>

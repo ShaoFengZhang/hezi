@@ -1,5 +1,6 @@
 //app.js
 import loginApi from './utils/login.js';
+const ald = require('./utils/ald-stat.js');
 App({
 	onLaunch: function () {
 		this.netBlock = 0;

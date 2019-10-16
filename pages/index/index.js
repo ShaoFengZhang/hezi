@@ -7,43 +7,49 @@ Page({
 		itemArr:[
 			[
 				{
-					icon:'https://duanju.58100.com/upload/new/renxiang.png',
+					icon:'https://duanju.58100.com/upload/new/renxiang2.png',
 					text:'人像抠图',
 					path:'/pages/koutuindex/koutuindex',
 					type: 'inside'
 				},
 				{
-					icon: 'https://duanju.58100.com/upload/new/zhuangbi.png',
+					icon: 'https://duanju.58100.com/upload/new/zaoan.png',
 					text: '早安日签',
 					path: '/pages/malaindex/malaindex',
 					type: 'inside'
 				},
 				{
-					icon: 'https://duanju.58100.com/upload/new/bianzhuang.png',
+					icon: 'https://duanju.58100.com/upload/new/bianzhuang2.png',
 					text: '疯狂变装',
 					path: '/pages/bianzhuang/bianzhuang',
 					type: 'inside'
 				},
 				{
-					icon: 'https://duanju.58100.com/upload/new/jingqingqidai.png',
-					text: '贴纸相机',
+					icon: 'https://duanju.58100.com/upload/new/xiangkuang.png',
+					text: '魔幻相框',
 					path: '/pages/tiezhi/tiezhi',
 					type: 'inside',
 				},
 				{
-					icon: 'https://duanju.58100.com/upload/new/lianxing.png',
+					icon: 'https://duanju.58100.com/upload/new/lianxing2.png',
 					text: '测脸型',
 					path: '',
 					type:'without',
 					mini_id: "wx9e2a0a0dc2556902",
 				},
 				{
-					icon: 'https://duanju.58100.com/upload/new/faxing.png',
+					icon: 'https://duanju.58100.com/upload/new/faxing2.png',
 					text: '发型设计',
 					path: '',
 					type: 'without',
 					mini_id: "wxbf288d85dbc7d2a6",
 				},
+				// {
+				// 	icon: 'https://duanju.58100.com/upload/new/jingqingqidai.png',
+				// 	text: '敬请期待',
+				// 	path: '/pages/tiezhi/tiezhi',
+				// 	type: 'jingqingqidai',
+				// },
 			]
 		],
 	},

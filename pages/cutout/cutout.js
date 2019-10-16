@@ -25,6 +25,11 @@ Page({
 		wx.getSystemInfo({
 			success(res) {
 				_this.pix = (res.screenWidth / 300);
+				if (res.system.slice(0, 3) == 'iOS') {
+					_this.setData({
+						huiyuanhide: 1,
+					})
+				}
 			}
 		});
 

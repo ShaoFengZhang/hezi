@@ -31,27 +31,28 @@
     width: 100%;
     height: 498rpx;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .swiperItemChild {
-    width: 188rpx;
+    width: 168rpx;
     text-align: center;
-    font-size: 32rpx;
+    font-size: 28rpx;
     color: #666;
+	font-weight: bold;
     margin-bottom: 34rpx;
-    margin-right: 36rpx;
+    /* margin-right: 62rpx; */
 	position: relative;
 }
 
-.swiperItemChild:nth-child(3n) {
+/* .swiperItemChild:nth-child(3n) {
     margin-right: 0rpx;
-}
+} */
 
 .swiperItemChild image {
-    width: 188rpx;
-    height: 188rpx;
+    width: 168rpx;
+    height: 168rpx;
     vertical-align: top;
     margin: 0;
 }

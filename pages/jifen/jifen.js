@@ -24,6 +24,29 @@ Page({
 			}
 		});
 
+		// 激励广告
+		this.videoAd = null;
+		if (wx.createRewardedVideoAd) {
+			this.videoAd = wx.createRewardedVideoAd({
+				adUnitId: 'adunit-f05d3d7c4d9d4b23'
+			})
+			this.videoAd.onLoad(() => { })
+			this.videoAd.onError((err) => {
+				_this.setData({
+					videoAdShow: 0,
+				})
+			});
+			this.videoAd.onClose(res => {
+				// 用户点击了【关闭广告】按钮
+				if (res && res.isEnded) {
+					//完整观看
+					_this.addScore()
+				} else {
+					util.toast('需要完整观看视频哦~')
+				}
+			})
+		};
+
 	},
 
 	onShow: function () { },
@@ -31,6 +54,40 @@ Page({
 
 	onShareAppMessage: function () {
 		return util.shareObj
+	},
+
+	//观看广告
+	adShow: function () {
+		let _this = this;
+		util.loding()
+		if (this.videoAd) {
+			this.videoAd.show().then(() => wx.hideLoading()).catch(() => {
+				// 失败重试
+				this.videoAd.load()
+					.then(() => this.videoAd.show())
+					.catch(err => {
+						util.toast('今天观看广告次数已耗尽~')
+						console.log('激励视频 广告显示失败')
+					})
+			});
+
+		}
+	},
+
+	addScore: function () {
+		util.loding('正在领取积分')
+		let _this = this;
+		let addScoreUrl = loginApi.domin + '/home/index/plus';
+		loginApi.requestUrl(_this, addScoreUrl, "POST", {
+			'uid': wx.getStorageSync('u_id'),
+		}, function (res) {
+			if (res.status == 1) {
+				_this.setData({
+					userScore: res.integral
+				});
+				util.toast('积分领取成功')
+			}
+		})
 	},
 
 	//得到积分

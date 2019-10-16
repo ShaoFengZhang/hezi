@@ -31,6 +31,24 @@
         <button id="shareBtn" open-type="share"></button>
 
     </view>
+	<view class="videoAdAd adview" catchtap="adShow" wx:if="{{videoAdShow}}">
+
+        <view class="adIcon">
+            <image src="https://duanju.58100.com/upload/new/videoAd.png" />
+        </view>
+
+        <view class="adtitle">
+            <view style="color:#000;font-size:36rpx;margin-bottom:10rpx;">观看广告视频</view>
+            <view style="color:#999;font-size:28rpx;">观看一次视频获取50积分</view>
+        </view>
+
+        <view class="adbtn">立即观看</view>
+        <form bindsubmit="formSubmit" report-submit="{{true}}">
+            <button formType="submit" class='Sbtn'>
+            </button>
+        </form>
+
+    </view>
 
     <view class="openVip" catchtap="gotoVip" wx:if="{{!huiyuanhide}}">
         <image src="https://duanju.58100.com/upload/new/openvip.png" />

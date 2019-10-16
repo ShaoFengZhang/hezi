@@ -21,6 +21,17 @@ Page({
         this.cangetData = true;
         this.getClass();
 
+		wx.getSystemInfo({
+			success(res) {
+				console.log(res);
+				if (res.system.slice(0, 3) == 'iOS') {
+					_this.setData({
+						huiyuanhide: 1,
+					})
+				}
+			}
+		});
+
 		// 获取其他组件高度
         const query = wx.createSelectorQuery()
         query.select('#classifyView').boundingClientRect()
@@ -85,7 +96,8 @@ Page({
 		if (!this.ronghePic){
 			return;
 		}
-		this.renlianronghe();
+		// this.renlianronghe();
+		this.judgevip()
     },
 
     //分类文字点击
@@ -154,7 +166,8 @@ Page({
 				if (!_this.ronghePic) {
 					return;
 				}
-				_this.renlianronghe();
+				// _this.renlianronghe();
+				_this.judgevip()
             }
         })
     },
@@ -189,6 +202,11 @@ Page({
                     ifshowMask: 0,
                 });
                 util.toast('积分领取成功')
+				if (!_this.ronghePic) {
+					return;
+				}
+				_this.judgevip();
+
             }
         })
     },
@@ -220,7 +238,8 @@ Page({
                 _this.setData({
                     userScore: res.integral
                 });
-                _this.uploadImage(2);
+                // _this.uploadImage(2);
+				_this.renlianronghe();
             };
             if (res.status == 2) {
                 util.toast('积分扣除失败/积分不足')
@@ -230,10 +249,18 @@ Page({
 
     // 上传图片
     shangchuan: function() {
+		if (!this.data.ifVip && this.data.userScore<50) {
+			this.setData({
+				ifshowMask: 1,
+			});
+			return;
+		};
+
         let _this = this;
 		util.upLoadImage("uploadrenxiang1", "image", 1, this, loginApi, function(data) {
             _this.ronghePic = data.imgurl;
-			_this.renlianronghe()
+			// _this.renlianronghe()
+			_this.judgevip()
         });
     },
 
@@ -261,6 +288,22 @@ Page({
 
     // 判断VIP
     judgevip: function() {
+		if (this.data.ifVip){
+			this.renlianronghe();
+			return;
+		};
+		if (this.data.userScore >= 50) {
+			this.minusscore();
+			// this.renlianronghe();
+			return;
+		};
+
+		this.setData({
+			ifshowMask: 1,
+		});
+		return;
+
+
         if (this.data.ifVip) {
             this.uploadImage(1);
             return;
@@ -279,7 +322,7 @@ Page({
     // 点击保存图片
     uploadImage: function(type) {
         let _this = this;
-		let src = type == 1 ? this.data.posterUrl : this.data.qcode;
+		let src = this.data.ifVip ? this.data.posterUrl : this.data.qcode;
         wx.getSetting({
             success(res) {
                 // 进行授权检测，未授权则进行弹层授权

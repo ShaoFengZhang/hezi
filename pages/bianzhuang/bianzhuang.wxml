@@ -1,21 +1,21 @@
 <view class="bg">
     <top-bar id="topBarView" comtype="{{2}}"></top-bar>
 
-	<!-- 未上传图片 -->
-    <view class="initPage" catchtap="shangchuan" wx:if="{{!haveUserPic}}" style="height:{{topViewHeight}}px">
+    <!-- 未上传图片 -->
+    <view class="initPage" id="classifyView" catchtap="shangchuan" wx:if="{{!haveUserPic}}" style="height:{{932}}rpx">
         <view class="uploadView">
             <image src="https://duanju.58100.com/upload/new/upload.png" />
             <view class="uploadTxt">上传照片</view>
         </view>
     </view>
 
-	<!-- 融合后 -->
-    <view class="handleView" wx:if="{{haveUserPic}}" style="height:{{topViewHeight}}px">
+    <!-- 融合后 -->
+    <view class="handleView" id="classifyView" wx:if="{{haveUserPic}}" style="height:{{932}}rpx">
         <image src="{{fusionImage}}" />
     </view>
 
-	<!-- 分类生成按钮 -->
-    <view id="classifyView" class="classifyView" catchtap="catchtap">
+    <!-- 分类生成按钮 -->
+    <view class="classifyView" catchtap="catchtap" style="height:{{topViewHeight}}px">
 
         <view class="categoryTxtView">
             <scroll-view scroll-x style="height: 88rpx;width:500rpx;">
@@ -23,29 +23,28 @@
                     <view class="classTxtItem {{categoryNowIndex==index?'selectTxt':null}}" wx:for="{{classArr}}" wx:key="*this" data-index="{{index}}" catchtap="txtClassClick">{{item.txt}}</view>
                 </view>
             </scroll-view>
-            <view class="makeBtnView" wx:if="{{haveUserPic}}" catchtap="judgevip">
+            <view class="makeBtnView" wx:if="{{haveUserPic}}" catchtap="uploadImage">
                 <image src="https://duanju.58100.com/upload/new/malashengcheng.png" />
                 <text>保存</text>
             </view>
         </view>
 
         <view class="categoryPicView">
-            <scroll-view scroll-x style="height: 140rpx;" bindscrolltolower="classPicRight">
+            <view class="changePic" catchtap="shangchuan">
+                <image src="https://duanju.58100.com/upload/new/changePic.png" />
+            </view>
+            <scroll-view scroll-x style=" width:570rpx;height: 140rpx;" bindscrolltolower="classPicRight">
                 <view class="scroll-view">
-                    <view class="changePic" catchtap="shangchuan">
-                        <image src="https://duanju.58100.com/upload/new/changePic.png" />
-                    </view>
                     <view class="classPicItem {{index==picNowSelcet?'slectPic':null}}" wx:for="{{categoryPicArr}}" wx:key="*this" data-index="{{index}}" catchtap="classPicClick">
                         <image mode="scaleToFill" src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
                     </view>
                 </view>
             </scroll-view>
-
-
         </view>
+
     </view>
 
-	<!-- 积分广告 -->
+    <!-- 积分广告 -->
     <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hidejsfenMask">
 
         <view class="maskBody" style="height:{{huiyuanhide?580:710}}rpx">
@@ -57,13 +56,13 @@
 
                 <view class="shareBtn">
                     <image src="https://duanju.58100.com/upload/new/sharebg.png" />
-                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取100积分</view>
+                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取50积分</view>
                     <button id="shareBtn" open-type="share"></button>
                 </view>
 
                 <view class="videoAd" catchtap="adShow">
                     <image src="https://duanju.58100.com/upload/new/videoAd.png" />
-                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取100积分</view>
+                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取50积分</view>
                 </view>
 
             </view>
@@ -75,5 +74,4 @@
         </view>
 
     </view>
-
 </view>
