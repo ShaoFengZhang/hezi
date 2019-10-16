@@ -8,7 +8,7 @@
     width: 100%;
     /* height: 100vh; */
     background-color: #f3f3f3;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 .initPage image {
@@ -16,15 +16,34 @@
     height: 170rpx;
 }
 
-.handleView{
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.handleView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moveBox {
+    width: 600rpx;
+    height: 804rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.moveablearea{
+	position: absolute;
+	left: -1200px;
+	top: -1098px;
 }
 
 .handleView image{
-	width: 600rpx;
-	height: 804rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.handleView .mubanimg {
+    width: 600rpx;
+    height: 804rpx;
 }
 
 .uploadView {
@@ -58,10 +77,10 @@
     color: #5f6070;
     overflow: hidden;
     white-space: nowrap;
-	box-sizing: border-box;
-	padding: 0 20rpx;
-	display: flex;
-	align-items: center;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+    display: flex;
+    align-items: center;
 }
 
 .scroll-view {
@@ -73,55 +92,55 @@
 
 .classTxtItem {
     margin-right: 24rpx;
-    color: #5F6070;
+    color: #5f6070;
     font-size: 28rpx;
-	padding: 0 10rpx;
+    padding: 0 10rpx;
 }
 
-.selectTxt{
-	color: #F80050;
+.selectTxt {
+    color: #f80050;
 }
 
-.categoryPicView{
-	width: 100%;
+.categoryPicView {
+    width: 100%;
     height: 140rpx;
     overflow: hidden;
     white-space: nowrap;
-	box-sizing: border-box;
-	padding: 0 20rpx;
+    box-sizing: border-box;
+    padding: 0 20rpx;
 }
 
-.classPicItem{
-	margin-right: 20rpx;
-	border-radius:4rpx;
+.classPicItem {
+    margin-right: 20rpx;
+    border-radius: 4rpx;
 }
 
 .classPicItem image {
     width: 116rpx;
     height: 116rpx;
     vertical-align: top;
-	border-radius:4rpx;
+    border-radius: 4rpx;
 }
 
 .slectPic image {
-    border: 4rpx solid #F80D7F;
+    border: 4rpx solid #f80d7f;
 }
 
-.changePic,.changePic image{
-	width: 140rpx;
-	height: 140rpx;
+.changePic, .changePic image {
+    width: 140rpx;
+    height: 140rpx;
 }
 
-.makeBtnView{
-	font-size: 32rpx;
-	color: #282828;
-	margin-left: 60rpx;
+.makeBtnView {
+    font-size: 32rpx;
+    color: #282828;
+    margin-left: 60rpx;
 }
 
-.makeBtnView image{
-	width: 72rpx;
-	height: 72rpx;
-	vertical-align: middle;
+.makeBtnView image {
+    width: 72rpx;
+    height: 72rpx;
+    vertical-align: middle;
 }
 
 /* 积分mask */

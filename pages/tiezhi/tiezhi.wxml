@@ -1,7 +1,7 @@
 <view class="bg">
     <top-bar id="topBarView" comtype="{{2}}"></top-bar>
 
-	<!-- 未上传图片 -->
+    <!-- 未上传图片 -->
     <view class="initPage" catchtap="shangchuan" wx:if="{{!haveUserPic}}" style="height:{{topViewHeight}}px">
         <view class="uploadView">
             <image src="https://duanju.58100.com/upload/new/upload.png" />
@@ -9,12 +9,25 @@
         </view>
     </view>
 
-	<!-- 融合后 -->
+    <!-- 融合后 -->
     <view class="handleView" wx:if="{{haveUserPic}}" style="height:{{topViewHeight}}px">
-        <image src="{{fusionImage}}" />
+        <view class="moveBox">
+            <movable-area class="moveablearea" style="height: 3000px; width: 3000px;">
+                <movable-view animation="{{0}}" x="{{userx}}" y="{{usery}}" style="width: 600rpx;height:{{userimgh}}px" direction="all">
+                    <image bindload="userimgload" id="userimg" class="userimg" mode="widthFix" style="width:{{600}}rpx" src="{{userUpLoadImg}}" />
+                </movable-view>
+                <movable-view x="1200" y="1098" style="width: 600rpx;height:804rpx;" direction="none">
+                    <image id="mubanimg" class="mubanimg" src="{{srcDomin}}/newadmin/Uploads/{{mubanimg}}" />
+                </movable-view>
+				<movable-view animation="{{0}}" bindchange="bindchange" x="{{maskx}}" y="{{masky}}" style="width: 600rpx;height:{{804}}rpx" direction="all">
+                    
+                </movable-view>
+            </movable-area>
+        </view>
+
     </view>
 
-	<!-- 分类生成按钮 -->
+    <!-- 分类生成按钮 -->
     <view id="classifyView" class="classifyView" catchtap="catchtap">
 
         <view class="categoryTxtView">
@@ -23,7 +36,7 @@
                     <view class="classTxtItem {{categoryNowIndex==index?'selectTxt':null}}" wx:for="{{classArr}}" wx:key="*this" data-index="{{index}}" catchtap="txtClassClick">{{item.txt}}</view>
                 </view>
             </scroll-view>
-            <view class="makeBtnView" wx:if="{{haveUserPic}}" catchtap="judgevip">
+            <view class="makeBtnView" wx:if="{{haveUserPic}}" catchtap="shengcheng">
                 <image src="https://duanju.58100.com/upload/new/malashengcheng.png" />
                 <text>保存</text>
             </view>
@@ -45,7 +58,7 @@
         </view>
     </view>
 
-	<!-- 积分广告 -->
+    <!-- 积分广告 -->
     <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hidejsfenMask">
 
         <view class="maskBody" style="height:{{huiyuanhide?580:710}}rpx">

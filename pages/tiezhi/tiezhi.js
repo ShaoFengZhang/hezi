@@ -11,6 +11,10 @@ Page({
         categoryPicArr: [],
         categoryNowIndex: 0,
         picNowSelcet: 0,
+        userx: 1200,
+        usery: 1098,
+        maskx: 1200,
+        masky: 1098,
     },
 
     onLoad: function(options) {
@@ -95,7 +99,13 @@ Page({
         if (!this.ronghePic) {
             return;
         }
-        this.renlianronghe();
+		this.setData({
+			mubanimg: this.data.categoryPicArr[this.data.picNowSelcet].url,
+			userx: 1200,
+			usery: 1098,
+			maskx: 1200,
+			masky: 1098,
+		})
     },
 
     //分类文字点击
@@ -108,6 +118,10 @@ Page({
             categoryNowIndex: index,
             categoryPicArr: [],
             picNowSelcet: 0,
+			userx: 1200,
+			usery: 1098,
+			maskx: 1200,
+			masky: 1098,
         });
         this.page = 1;
         this.rows = 10;
@@ -138,7 +152,7 @@ Page({
         }
     },
 
-    // 获取模板数据
+    // 获取相框模板数据
     getContent: function(typeid) {
         let _this = this;
         let getContentUrl = loginApi.domin + '/home/index/tiezhiindex';
@@ -161,10 +175,12 @@ Page({
                     categoryPicArr: _this.data.categoryPicArr.concat(res.contents),
                 });
 
-                if (!_this.ronghePic) {
+                if (!_this.ronghePic || _this.page > 1) {
                     return;
                 }
-                _this.renlianronghe();
+				_this.setData({
+					mubanimg: _this.data.categoryPicArr[_this.data.picNowSelcet].url,
+				})
             }
         })
     },
@@ -230,9 +246,11 @@ Page({
                 _this.setData({
                     userScore: res.integral
                 });
+				wx.hideLoading();
                 _this.uploadImage(2);
             };
             if (res.status == 2) {
+				wx.hideLoading();
                 util.toast('积分扣除失败/积分不足')
             }
         })
@@ -243,105 +261,92 @@ Page({
         let _this = this;
         util.upLoadImage("uploadrenxiang2", "image", 1, this, loginApi, function(data) {
             _this.ronghePic = data.imgurl;
-            _this.renlianronghe()
+			_this.setData({
+				userx: 1200,
+				usery: 1098,
+				maskx: 1200,
+				masky: 1098,
+			})
+            wx.getImageInfo({
+                src: data.imgurl,
+                success(res) {
+                    console.log(res.width)
+                    console.log(res.height)
+                    _this.setData({
+                        haveUserPic: 1,
+                        userUpLoadImg: data.imgurl,
+                        mubanimg: _this.data.categoryPicArr[_this.data.picNowSelcet].url,
+                    })
+                }
+            })
+
         });
     },
 
-    shangchuan: function() {
-        wx.chooseImage({
-            count: 1,
-            sizeType: ['compressed'],
-            sourceType: ['album'],
-            success: function(res) {
-                wx.showToast({
-                    title: '正在上传...',
-                    icon: 'loading',
-                    mask: true,
-                    duration: 10000
-                });
-                let tempFilePaths = res.tempFilePaths;
-                let upImgCount = tempFilePaths.length;
-                wx.uploadFile({
-					url: 'http://192.168.124.4/shangchuan.php',
-                    filePath: tempFilePaths[0],
-                    name: 'image',
-                    formData: {
-
-                    },
-                    header: {
-                        "Content-Type": "multipart/form-data"
-                    },
-                    success: function(res) {
-                        if (res.data) {
-                            let data = JSON.parse(res.data);
-                            if (data.status == 1) {
-                                if (hasCount == upImgCount) {
-                                    wx.hideToast();
-                                }
-                                cb(data);
-                            } else {
-                                wx.hideToast();
-                                wx.showModal({
-                                    title: '错误提示',
-                                    content: '上传图片失败',
-                                    showCancel: false,
-                                    success: function(res) {}
-                                });
-                                return;
-                            }
-                        } else {
-                            wx.hideToast();
-                            wx.showModal({
-                                title: '错误提示',
-                                content: '上传图片失败',
-                                showCancel: false,
-                                success: function(res) {}
-                            });
-                            return;
-                        }
-
-
-                    },
-                    fail: function(res) {
-                        wx.hideToast();
-                        wx.showModal({
-                            title: '错误提示',
-                            content: '上传图片请求失败',
-                            showCancel: false,
-                            success: function(res) {}
-                        })
-                    }
-                });
-
-            }
-        });
-    },
-
-    // 人脸融合
-    renlianronghe: function() {
-        util.loding('全力融合中~')
+	// 上传图片加载完成
+    userimgload: function() {
         let _this = this;
-        let targetpic = this.data.categoryPicArr[this.data.picNowSelcet].url;
-        let renlianrongheUrl = loginApi.domin + '/home/index/ronghe';
-        loginApi.requestUrl(_this, renlianrongheUrl, "POST", {
-            'imgurl': _this.ronghePic,
-            "template": targetpic,
-        }, function(res) {
-            if (res.status == 1) {
-                _this.setData({
-                    posterUrl: res.vip,
-                    qcode: res.imgurl,
-                    fusionImage: res.vip,
-                    haveUserPic: 1,
-                });
-                wx.hideLoading();
-            }
+        const query = wx.createSelectorQuery()
+        query.select('#userimg').boundingClientRect()
+        query.exec(function(res) {
+            console.log(res[0].height)
+            _this.setData({
+                userimgh: res[0].height,
+                userimgw: res[0].width,
+            });
+        });
+		const query1 = wx.createSelectorQuery()
+		query1.select('#mubanimg').boundingClientRect()
+		query1.exec(function (res) {
+			console.log(res[0].height)
+			_this.setData({
+				mh: res[0].height,
+				mw: res[0].width,
+			});
+		})
+    },
+
+	// 移动
+    bindchange: function(e) {
+        let x = e.detail.x
+        let y = e.detail.y
+        this.setData({
+            userx: x,
+            usery: y,
         })
     },
+
+	shengcheng:function(){
+		util.loding('全速生成中~')
+		let _this = this;
+		let shengchengUrl = loginApi.domin + '/home/index/shengchengtiezhi';
+		loginApi.requestUrl(_this, shengchengUrl, "POST", {
+			'uid': wx.getStorageSync('u_id'),
+			"imgurl": this.data.userUpLoadImg,
+			"id": this.data.categoryPicArr[_this.data.picNowSelcet].id,
+			"x": this.data.userx-1200,
+			"y": this.data.usery-1098,
+			"w": this.data.userimgw,
+			"h": this.data.userimgh,
+			"mw": this.data.mw,
+			"mh": this.data.mh,
+		}, function (res) {
+			if (res.status == 1) {
+				console.log(res)
+				_this.setData({
+					posterUrl: res.path,
+					qcode: res.qcode,
+				})
+				_this.judgevip()
+			};
+			
+		})
+	},
 
     // 判断VIP
     judgevip: function() {
         if (this.data.ifVip) {
+			wx.hideLoading();
             this.uploadImage(1);
             return;
         };
@@ -349,6 +354,7 @@ Page({
         if (this.data.userScore >= 50) {
             this.minusscore();
         } else {
+			wx.hideLoading();
             this.setData({
                 ifshowMask: 1,
             })

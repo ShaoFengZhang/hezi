@@ -163,7 +163,7 @@ Page({
                     categoryPicArr: _this.data.categoryPicArr.concat(res.contents),
                 });
 
-				if (!_this.ronghePic) {
+				if (!_this.ronghePic || _this.page>1) {
 					return;
 				}
 				// _this.renlianronghe();
