@@ -3,26 +3,34 @@
 
     <view class="TopSiperView">
         <swiper class="topSwiper" indicator-dots="{{false}}" autoplay="{{false}}">
-            <block >
-                <swiper-item>
+            <block>
+                <swiper-item style="position: relative;">
                     <view class="swiperItem">
-						<image src="https://duanju.58100.com/upload/new/top.png" />
-					</view>
+                        <image src="https://duanju.58100.com/upload/new/top.png" />
+                    </view>
+                    <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                        <button formType="submit" class='Sbtn'>
+                        </button>
+                    </form>
                 </swiper-item>
             </block>
         </swiper>
     </view>
 
-	<view class="centerSiperView">
+    <view class="centerSiperView">
         <swiper class="centerSwiper" indicator-dots="{{false}}" autoplay="{{false}}">
             <block wx:for="{{itemArr}}" wx:key="*this">
                 <swiper-item class="centerswiperItem">
                     <view catchtap="goToPage" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="*this">
-						<image src="{{item.icon}}" />
-						<view>{{item.text}}</view>
-						<navigator catchtap="catchtap" wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate"  app-id="{{item.mini_id}}" version="release"></navigator>
-						<view class="mask"  catchtap="showmask" wx:if="{{item.type=='jingqingqidai'}}"></view>
-					</view>
+                        <image src="{{item.icon}}" />
+                        <view>{{item.text}}</view>
+                        <navigator catchtap="catchtap" wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate" app-id="{{item.mini_id}}" version="release"></navigator>
+                        <view class="mask" catchtap="showmask" wx:if="{{item.type=='jingqingqidai'}}"></view>
+                        <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                            <button formType="submit" class='Sbtn'>
+                            </button>
+                        </form>
+                    </view>
                 </swiper-item>
             </block>
         </swiper>

@@ -6,6 +6,10 @@
             <view class="bgBox">
                 <view class="mubanItem" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="gotomaking">
                     <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                    <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                        <button formType="submit" class='Sbtn'>
+                        </button>
+                    </form>
                 </view>
 
                 <!-- 暂时没有数据 -->

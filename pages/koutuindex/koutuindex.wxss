@@ -32,4 +32,5 @@
 
 .uploadbtn{
     margin: 62rpx auto 0;
+	position: relative;
 }

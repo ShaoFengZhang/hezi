@@ -97,6 +97,11 @@ Page({
 
 	showmask:function(){
 		util.toast('敬请期待~')
-	}
+	},
+
+	// 收集formid
+	formSubmit: function (e) {
+		util.formSubmit(app, e);
+	},
 
 })

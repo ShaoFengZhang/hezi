@@ -158,7 +158,7 @@ const dateArrStort = function(data, p) {
 const formSubmit = function(app, e) {
     console.log(1212121, e.detail.formId);
     let _this = this;
-    let collectFormIdUrl = login.domin + '/home/index/formid';
+    let collectFormIdUrl = login.domin + '/home/index/diandianformid';
     if (e.detail.formId == 'the formId is a mock one') {
         return;
     }
@@ -170,7 +170,7 @@ const formSubmit = function(app, e) {
     };
 
     login.requestUrl(app, collectFormIdUrl, "POST", data, function(res) {
-        console.log("???????")
+		console.log("formId收集成功")
     })
 };
 

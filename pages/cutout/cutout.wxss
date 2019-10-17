@@ -29,6 +29,7 @@
 .changePic, .makingView {
     width: 134rpx;
     height: 120rpx;
+	position: relative;
 }
 
 .makeBtn image {
@@ -173,6 +174,7 @@
     width: 520rpx;
     height: 128rpx;
     margin: 64rpx auto 0;
+	position: relative;
 }
 
 /* 底部分类 */
@@ -196,6 +198,7 @@
     margin-right: 40rpx;
     color: #9b9b9b;
     font-size: 32rpx;
+	position: relative;
 }
 
 .selectTxt {
@@ -216,6 +219,7 @@
 
 .classPicItem {
     margin-right: 16rpx;
+	position: relative;
 }
 
 .classPicItem image {

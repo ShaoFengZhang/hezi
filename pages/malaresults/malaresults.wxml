@@ -1,5 +1,5 @@
 <view class='bg'>
-     <top-bar id="topBarView" comtype="{{2}}" colortype="{{2}}"></top-bar>
+    <top-bar id="topBarView" comtype="{{2}}" colortype="{{2}}"></top-bar>
     <view class="posterView" style="height:{{viewHeight}}px">
 
         <view class="imgview" style="height:{{viewHeight}}px">
@@ -56,6 +56,10 @@
 
             <view class="maskBotAdView" catchtap="gotovip" wx:if="{{!huiyuanhide}}">
                 <image style="width:520rpx;height:156rpx;" src="/assets/app/maskBotAd.png" />
+                <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                    <button formType="submit" class='Sbtn'>
+                    </button>
+                </form>
             </view>
 
         </view>

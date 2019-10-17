@@ -8,11 +8,15 @@
     <view class="btnView">
         <view class="shareBtn">
             <image src="https://duanju.58100.com/upload/new/shareBtn.png" />
-            <button id="shareBtn"  open-type="share"></button>
+            <button id="shareBtn" open-type="share"></button>
         </view>
 
-        <view class="uploadbtn" catchtap="uploadImage">
-           <image src="https://duanju.58100.com/upload/new/downBtn.png" />
+        <view class="uploadbtn" catchtap="uploadImage" style="position: relative;">
+            <image src="https://duanju.58100.com/upload/new/downBtn.png" />
+            <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
     </view>
 

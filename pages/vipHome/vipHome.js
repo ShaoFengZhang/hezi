@@ -10,7 +10,7 @@ Page({
 
 			{
 				title: "半年会员",
-				nowprice: 9.9,
+				nowprice: 14.9,
 				// nowprice: 0.01,
 				oriprice: 49,
 				type: 188,
@@ -18,7 +18,7 @@ Page({
 
 			{
 				title: "月会员",
-				nowprice: 2.9,
+				nowprice: 4.9,
 				// nowprice: 0.01,
 				oriprice: 9.9,
 				type: 30,
@@ -26,7 +26,7 @@ Page({
 
 			{
 				title: "年会员",
-				nowprice: 19.9,
+				nowprice: 29.9,
 				// nowprice: 0.01,
 				oriprice: 109,
 				type: 365,

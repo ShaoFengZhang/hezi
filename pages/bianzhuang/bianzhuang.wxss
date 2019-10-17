@@ -30,6 +30,7 @@
 .uploadView {
     text-align: center;
     margin-top: 352rpx;
+	position: relative;
 }
 
 .uploadTxt {
@@ -78,6 +79,7 @@
     color: #5F6070;
     font-size: 28rpx;
 	padding: 0 10rpx;
+	position: relative;
 }
 
 .selectTxt{
@@ -99,6 +101,7 @@
 .classPicItem{
 	margin-right: 20rpx;
 	border-radius:4rpx;
+	position: relative;
 }
 
 .classPicItem image {
@@ -121,6 +124,7 @@
 	font-size: 32rpx;
 	color: #282828;
 	margin-left: 60rpx;
+	position: relative;
 }
 
 .makeBtnView image{
@@ -176,4 +180,5 @@
     width: 520rpx;
     height: 128rpx;
     margin: 64rpx auto 0;
+	position: relative;
 }

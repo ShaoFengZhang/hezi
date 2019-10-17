@@ -3,13 +3,13 @@
     <top-bar id="topBarView" style="z-index:9999;" comtype="{{2}}" colortype="{{2}}"></top-bar>
 
     <view id="caozuo">
-        <image src="{{dituimg}}"  bindload="imagebindload"/>
+        <image src="{{dituimg}}" bindload="imagebindload" />
     </view>
 
     <view class='contentWarp' style="left:{{posLeft}}px;top:{{posTop}}px">
-        <movable-area class="canMoveArea" >
-            <movable-view animation="{{false}}" style='width:{{picinfo.width}}px;height:{{picinfo.height}}px;'  direction="all" scale scale-min="0.5" scale-max="4" scale-value="{{scale}}" x="{{dx}}" y="{{dy}}" bindchange="onChange" bindscale="onScale">
-                <image class="peopleImg" src="{{peopleUrl}}" style='width:{{picinfo.width}}px;height:{{picinfo.height}}px;'/>
+        <movable-area class="canMoveArea">
+            <movable-view animation="{{false}}" style='width:{{picinfo.width}}px;height:{{picinfo.height}}px;' direction="all" scale scale-min="0.5" scale-max="4" scale-value="{{scale}}" x="{{dx}}" y="{{dy}}" bindchange="onChange" bindscale="onScale">
+                <image class="peopleImg" src="{{peopleUrl}}" style='width:{{picinfo.width}}px;height:{{picinfo.height}}px;' />
             </movable-view>
         </movable-area>
     </view>
@@ -20,7 +20,13 @@
         <view class="txtClass">
             <scroll-view scroll-x style="height: 56rpx;">
                 <view class="scroll-view">
-                    <view class="classTxtItem {{txtNowIndex==index?'selectTxt':null}}" wx:for="{{classArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="txtClassClicl">{{item.txt}}</view>
+                    <view class="classTxtItem {{txtNowIndex==index?'selectTxt':null}}" wx:for="{{classArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="txtClassClicl">
+                        {{item.txt}}
+                        <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                            <button formType="submit" class='Sbtn'>
+                            </button>
+                        </form>
+                    </view>
                 </view>
             </scroll-view>
         </view>
@@ -30,6 +36,10 @@
                 <view class="scroll-view">
                     <view class="classPicItem {{index==picNowSelcet?'slectPic':null}}" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="classPicClick">
                         <image mode="scaleToFill" src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />
+                        <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                            <button formType="submit" class='Sbtn'>
+                            </button>
+                        </form>
                     </view>
                 </view>
             </scroll-view>
@@ -41,11 +51,19 @@
         <view class="changePic" style="margin-right:106rpx;" catchtap="cutOutshangchuan">
             <image src="https://duanju.58100.com/upload/new/huantu.png" />
             <text>换图</text>
+            <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
         <view class="makingView" catchtap="generatePoster">
             <image src="https://duanju.58100.com/upload/new/chenggong.png" />
             <text>生成</text>
+            <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
         </view>
 
         <view class="wushijifen" wx:if="{{!ifVip}}">-50积分</view>
@@ -76,6 +94,10 @@
 
             <view class="maskBotAdView" catchtap="gotovip" wx:if="{{!huiyuanhide}}">
                 <image style="width:520rpx;height:156rpx;" src="https://duanju.58100.com/upload/new/maskBotAd.png" />
+				<form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                    <button formType="submit" class='Sbtn'>
+                    </button>
+                </form>
             </view>
 
         </view>

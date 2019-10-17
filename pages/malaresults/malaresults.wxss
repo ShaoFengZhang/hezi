@@ -112,4 +112,5 @@
     width: 520rpx;
     height: 128rpx;
     margin: 64rpx auto 0;
+	position: relative;
 }
