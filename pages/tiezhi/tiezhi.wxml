@@ -2,7 +2,7 @@
     <top-bar id="topBarView" comtype="{{2}}"></top-bar>
 
     <!-- 未上传图片 -->
-    <view class="initPage" catchtap="shangchuan" wx:if="{{!haveUserPic}}" style="height:{{topViewHeight}}px">
+    <view class="initPage" id="classifyView" catchtap="shangchuan" wx:if="{{!haveUserPic}}" style="height:{{932}}rpx">
         <view class="uploadView">
             <image src="https://duanju.58100.com/upload/new/upload.png" />
             <view class="uploadTxt">上传照片</view>
@@ -14,7 +14,7 @@
     </view>
 
     <!-- 融合后 -->
-    <view class="handleView" wx:if="{{haveUserPic}}" style="height:{{topViewHeight}}px">
+    <view class="handleView" wx:if="{{haveUserPic}}" style="height:{{932}}rpx">
         <view class="moveBox">
             <movable-area class="moveablearea" style="height: 3000px; width: 3000px;">
                 <movable-view animation="{{0}}" x="{{userx}}" y="{{usery}}" style="width: 600rpx;height:{{userimgh}}px" direction="all">
@@ -32,7 +32,7 @@
     </view>
 
     <!-- 分类生成按钮 -->
-    <view id="classifyView" class="classifyView" catchtap="catchtap">
+    <view class="classifyView" catchtap="catchtap" style="height:{{topViewHeight}}px">
 
         <view class="categoryTxtView">
             <scroll-view scroll-x style="height: 88rpx;width:500rpx;">

@@ -134,7 +134,7 @@
     color: rgba(255, 255, 255, 1);
     line-height: 94rpx;
     position: fixed;
-    bottom: 0;
+    bottom: 50rpx;
     left: 40rpx;
     z-index: 9999;
     text-align: center;

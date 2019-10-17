@@ -197,13 +197,13 @@
 .classTxtItem {
     margin-right: 40rpx;
     color: #9b9b9b;
-    font-size: 32rpx;
+    font-size: 28rpx;
 	position: relative;
 }
 
 .selectTxt {
     color: #fff;
-    font-size: 40rpx;
+    font-size: 32rpx;
 }
 
 .scroll-view {

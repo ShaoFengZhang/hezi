@@ -14,7 +14,7 @@ Page({
 				},
 				{
 					icon: 'https://duanju.58100.com/upload/new/zaoan.png',
-					text: '早安日签',
+					text: '文字图片',
 					path: '/pages/malaindex/malaindex',
 					type: 'inside'
 				},

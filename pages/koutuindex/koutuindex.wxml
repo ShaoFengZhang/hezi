@@ -4,7 +4,7 @@
     <view class="topdestxt">一键人像抠图 百变照片风格</view>
 
     <view class="gifView">
-        <image src="https://duanju.58100.com/upload/new/homegif.gif" />
+        <image src="https://duanju.58100.com/upload/new/koutuhome.gif" />
     </view>
 
     <view class="uploadbtn" catchtap="cutOutshangchuan">
