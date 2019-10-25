@@ -4,7 +4,7 @@
         <open-data type="userAvatarUrl"></open-data>
     </view>
 
-	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px"> 点点抠图 </view>
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px"> {{pageTitle}} </view>
 
 </view>
 
@@ -15,6 +15,17 @@
 		<view catchtap="backHome"></view>
     </view>
 
-	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px"> 点点抠图 </view>
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px"> {{pageTitle}} </view>
+
+</view>
+
+<view class='topBarView' wx:if="{{comtype==3}}" style="height:{{topbarHeight}}px;background-color:#FF639E">
+
+    <view  class="btnBox" style="bottom:{{posibottom}}px;background-image: url({{bg2}});" >
+		<view catchtap="backtopPage"></view>
+		<view catchtap="backHome"></view>
+    </view>
+
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px;color:white;"> {{pageTitle}} </view>
 
 </view>

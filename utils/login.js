@@ -28,6 +28,7 @@ const wxlogin = function(app) {
                             wx.setStorageSync('user_openID', value.data.openid);
                             wx.setStorageSync('u_id', value.data.uid);
                             wx.setStorageSync('ifnewUser', value.data.newuser);
+							getSettingfnc(app);
                             resolve(value);
                         } else {
                             loginNum++;
@@ -118,9 +119,65 @@ const requestUrl = (app, url, method, data, cb) => {
     })
 };
 
+// 获取用户信息
+const getSettingfnc = (app) => {
+    wx.getSetting({
+        success: res => {
+            if (res.authSetting['scope.userInfo']) {
+                wx.getUserInfo({
+                    lang: "zh_CN",
+                    success: res => {
+                        let iv = res.iv;
+                        let encryptedData = res.encryptedData;
+                        let session_key = app.globalData.session_key;
+                        app.globalData.userInfo = res.userInfo;
+                        checkUserInfo(app, res, iv, encryptedData, session_key);
+                        if (app.userInfoReadyCallback) {
+                            app.userInfoReadyCallback(res);
+                        }
+                    }
+                })
+            }
+        }
+    })
+};
+
+// 存储用户信息
+const checkUserInfo = (app, res, iv, encryptedData, session_key, cb) => {
+    if (wx.getStorageSync('rawData') != res.rawData) {
+        wx.setStorage({
+            key: "rawData",
+            data: res.rawData
+        })
+        requestUrl(app, checkUserUrl, "POST", {
+            // rowData: res.rawData,
+            // openid: wx.getStorageSync('user_openID'),
+            iv: iv,
+            encryptedData: encryptedData,
+            seesion_key: session_key,
+            uid: wx.getStorageSync('u_id'),
+        }, function(data) {
+            console.log('checkUser', data);
+            if (cb) {
+                cb();
+            }
+            //失败重新登录
+            if (data.status != 1) {
+                checkuserNum++;
+                if (checkuserNum >= 3) {
+                    checkuserNum = 0;
+                    return;
+                }
+                wxlogin(app);
+            }
+        });
+    }
+};
+
 module.exports = {
     domin: domin,
     wxlogin: wxlogin,
     requestUrl: requestUrl,
     srcDomin: srcDomin,
+	checkUserInfo: checkUserInfo,
 };

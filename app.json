@@ -12,7 +12,10 @@
 		"pages/kouturesults/kouturesults",
 		"pages/malaclassdetails/malaclassdetails",
 		"pages/bianzhuang/bianzhuang",
-		"pages/tiezhi/tiezhi"
+		"pages/tiezhi/tiezhi",
+		"pages/lianai/lianai",
+		"pages/lianaiwendalist/lianaiwendalist",
+		"pages/lianaiwentixiangqing/lianaiwentixiangqing"
 	],
 	"window": {
 		"navigationStyle": "custom"

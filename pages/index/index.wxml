@@ -19,14 +19,14 @@
 
     <view class="centerSiperView">
         <swiper class="centerSwiper" indicator-dots="{{false}}" autoplay="{{false}}">
-            <block wx:for="{{itemArr}}" wx:key="*this">
+            <block wx:for="{{itemArr}}" wx:key="{{index}}">
                 <swiper-item class="centerswiperItem">
-                    <view catchtap="goToPage" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="*this">
+                    <view catchtap="goToPage" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="{{index}}">
                         <image src="{{item.icon}}" />
                         <view>{{item.text}}</view>
                         <navigator catchtap="catchtap" wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate" app-id="{{item.mini_id}}" version="release"></navigator>
                         <view class="mask" catchtap="showmask" wx:if="{{item.type=='jingqingqidai'}}"></view>
-                        <form wx:if="{{item.type!='without'}}" bindsubmit="formSubmit" report-submit="{{true}}">
+                        <form wx:if="{{item.type!='without' && item.type!='jingqingqidai'}}" bindsubmit="formSubmit" report-submit="{{true}}">
                             <button formType="submit" class='Sbtn'>
                             </button>
                         </form>

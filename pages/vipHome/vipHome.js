@@ -203,7 +203,7 @@ Page({
 					content: '请联系客服电话 17130049211 或者加客服微信 bxz201809',
 					showCancel: false,
 					success: function (res) {
-						wx.reLaunch({
+						wx.navigateTo({
 							url: '/pages/mine/mine'
 						})
 					}

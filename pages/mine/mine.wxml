@@ -36,7 +36,7 @@
 
         <view class="huiyuanTxtView" style="width:550rpx;">
             <text>会员免费畅玩</text>
-            <text style="color:#B2B2B2;font-size:24rpx;">低至2.9元一天</text>
+            <text style="color:#B2B2B2;font-size:24rpx;">低至4.9元一月</text>
         </view>
 
         <image style="width:60rpx;height:60rpx;" src="https://duanju.58100.com/upload/new/right.png" />
@@ -44,6 +44,24 @@
             <button formType="submit" class='Sbtn'>
             </button>
         </form>
+
+    </view>
+
+	<view class="serverListView" wx:if="{{!huiyuanhide}}">
+
+        <view class="serverItem" catchtap="gotomyques" data-num='17130049211'>
+
+            <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="https://duanju.58100.com/upload/new/wendaicon.png" />
+
+            <view style="width:550rpx">我的问答</view>
+
+            <image style="width:60rpx;height:60rpx;" src="https://duanju.58100.com/upload/new/right.png" />
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+
+        </view>
 
     </view>
 
@@ -83,7 +101,23 @@
 
     </view>
 
+	<view class="serverListView">
 
+        <view class="serverItem" catchtap="copyuid" data-num='17130049211'>
+
+            <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="https://duanju.58100.com/upload/new/uidIcon.png" />
+
+            <view style="width:550rpx">{{uid}}</view>
+
+            <image style="width:60rpx;height:60rpx;" src="https://duanju.58100.com/upload/new/right.png" />
+            <form bindsubmit="formSubmit" report-submit="{{true}}">
+                <button formType="submit" class='Sbtn'>
+                </button>
+            </form>
+
+        </view>
+
+    </view>
 
     <!-- <view class="shengming serverItem">
         <image style="width:48rpx;height:48rpx;margin-right:32rpx;" src="/assets/app/mianze.png" />

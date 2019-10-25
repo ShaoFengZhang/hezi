@@ -10,7 +10,12 @@ Component({
         colortype: {
             type: Number,
             value: 1
-        }
+        },
+
+		pageTitle:{
+			type:String,
+			value:"点点抠图"
+		}
 
     },
 
