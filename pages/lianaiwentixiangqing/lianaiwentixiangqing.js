@@ -137,7 +137,9 @@ Page({
 
     //等待回复toast
     showmask: function() {
-        util.toast("请耐心等待~")
+        util.toast("请耐心等待~");
+		this.loadQuestionDetails(this.questionId)
+		this.questioOver(this.questionId)
     },
 
     //显示追问弹窗

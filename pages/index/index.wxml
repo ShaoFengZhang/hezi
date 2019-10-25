@@ -21,7 +21,7 @@
         <swiper class="centerSwiper" indicator-dots="{{false}}" autoplay="{{false}}">
             <block wx:for="{{itemArr}}" wx:key="{{index}}">
                 <swiper-item class="centerswiperItem">
-                    <view catchtap="goToPage" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="{{index}}">
+                    <view catchtap="goToPage" data-title="{{item.text}}" data-path="{{item.path}}" class="swiperItemChild" wx:for="{{item}}" wx:key="{{index}}">
                         <image src="{{item.icon}}" />
                         <view>{{item.text}}</view>
                         <navigator catchtap="catchtap" wx:if="{{item.type=='without'}}" target="miniProgram" open-type="navigate" app-id="{{item.mini_id}}" version="release"></navigator>

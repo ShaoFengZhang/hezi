@@ -8,7 +8,6 @@ Page({
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-        uid: wx.getStorageSync("u_id"),
         serverArr: [{
                 'icon': '/assets/app/score.png',
                 'title': '我的积分',
@@ -43,6 +42,9 @@ Page({
                 }
             }
         });
+		this.setData({
+			uid: wx.getStorageSync("u_id"),
+		})
     },
 
     onTabItemTap: function() {

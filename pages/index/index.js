@@ -5,9 +5,9 @@ const app = getApp();
 Page({
 
     data: {
-		userInfo: {},
-		hasUserInfo: false,
-		canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
         itemArr: [
             [{
                     icon: 'https://duanju.58100.com/upload/new/renxiang2.png',
@@ -64,7 +64,7 @@ Page({
     },
 
     onLoad: function(options) {
-		let _this=this;
+        let _this = this;
         if (this.data.canIUse) {
             console.log('elseif');
             app.userInfoReadyCallback = res => {
@@ -88,17 +88,17 @@ Page({
             }
         });
 
-		wx.getSystemInfo({
-			success(res) {
-				if (res.system.slice(0, 3) == 'iOS') {
-					_this.data.itemArr[0].splice(4, 1)
-					_this.setData({
-						huiyuanhide: 1,
-						itemArr: _this.data.itemArr
-					});
-				}
-			}
-		});
+        wx.getSystemInfo({
+            success(res) {
+                if (res.system.slice(0, 3) == 'iOS') {
+                    _this.data.itemArr[0].splice(4, 1)
+                    _this.setData({
+                        huiyuanhide: 1,
+                        itemArr: _this.data.itemArr
+                    });
+                }
+            }
+        });
     },
 
     onShow: function() {
@@ -113,9 +113,13 @@ Page({
     // 跳转对应小程序
     goToPage: function(e) {
         const path = e.currentTarget.dataset.path;
+		const title = e.currentTarget.dataset.title;
+		wx.reportAnalytics('indexiconclick', {
+			itemname: title,
+		});
         wx.navigateTo({
             url: path,
-        })
+        });
     },
 
     // 判断分享加积分

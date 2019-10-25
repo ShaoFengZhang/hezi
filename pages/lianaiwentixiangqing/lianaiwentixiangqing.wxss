@@ -15,12 +15,12 @@
 
 .qAndaView{
 	box-sizing: border-box;
-	padding: 40rpx 40rpx 0; 
+	padding: 20rpx 20rpx 0; 
 }
 
 .aFewques{
 	font-weight: bold;
-	font-size: 40rpx;
+	font-size: 36rpx;
 }
 
 .answerView{

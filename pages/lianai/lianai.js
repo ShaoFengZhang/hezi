@@ -75,7 +75,7 @@ Page({
 			if (res.status == 1) {
 				_this.setData({
 					helpNum: res.list.times,
-					commentsNum: res.list.evaluate,
+					commentsNum: res.count,
 					expert_id: res.list.id,
 					expertDes: res.list.label,
 					expertIcon: 'http://duanju.58100.com/qinggan/Uploads/'+res.list.icon,
