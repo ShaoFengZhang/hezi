@@ -42,7 +42,7 @@ Page({
 	},
 
 	// 加载下一页
-	onReachBottom: function () {
+	nextpage: function () {
 		if (this.cangetData) {
 			this.page++;
 			this.loadComment();
@@ -111,8 +111,8 @@ Page({
 			util.toast("请输入有效内容~", 1200)
 			return;
 		};
-        // this.unitedPayRequest("恋爱咨询", 55.0)
-        this.unitedPayRequest("恋爱咨询", 0.01)
+        this.unitedPayRequest("恋爱咨询", 69.0)
+        // this.unitedPayRequest("恋爱咨询", 0.01)
     },
 
     /*统一支付接口*/
@@ -215,7 +215,7 @@ Page({
                     showCancel: false,
                     success: function(res) {
                         if (res.confirm) {
-                            _this.uploadPayInfo(55.0,out_trade_no);
+                            _this.uploadPayInfo(69.0,out_trade_no);
                         }
                     }
                 })

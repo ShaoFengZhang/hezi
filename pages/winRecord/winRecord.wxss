@@ -1,0 +1,39 @@
+.bg{
+	background-color: #F56134;
+}
+
+.listview{
+	background-image: url('https://duanju.58100.com/upload/new/winBg.png');
+	background-repeat: no-repeat;
+	background-size: 100% 1214rpx;
+	overflow: hidden;
+}
+
+.scrollView{
+	width: 630rpx;
+	height: 784rpx;
+	margin: 390rpx auto 0;
+	box-sizing: border-box;
+	padding: 10rpx 36rpx 0 32rpx;
+}
+
+.winrecordView{
+	width: 100%;
+	height: 82rpx;
+	border-bottom: 2rpx solid #F5F0DF;
+	display: flex;
+	align-items: center;
+	line-height: 82rpx;
+}
+
+.timeview{
+	width: 408rpx;
+	color: #A68378;
+}
+
+.deatilsview{
+	text-align: right;
+	width: 154rpx;
+	color: #FE5A00;
+}
+

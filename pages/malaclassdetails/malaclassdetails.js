@@ -47,7 +47,7 @@ Page({
     },
 
     // 加载下一页
-    onReachBottom: function () {
+    nextpage: function () {
         if (this.cangetData) {
             this.page++;
             clearTimeout(this.bottomTime);

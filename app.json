@@ -15,7 +15,12 @@
 		"pages/tiezhi/tiezhi",
 		"pages/lianai/lianai",
 		"pages/lianaiwendalist/lianaiwendalist",
-		"pages/lianaiwentixiangqing/lianaiwentixiangqing"
+		"pages/lianaiwentixiangqing/lianaiwentixiangqing",
+		"pages/turntable/turntable",
+		"pages/mallindex/mallindex",
+		"pages/currencyRecord/currencyRecord",
+		"pages/goods/goods",
+		"pages/winRecord/winRecord"
 	],
 	"window": {
 		"navigationStyle": "custom"

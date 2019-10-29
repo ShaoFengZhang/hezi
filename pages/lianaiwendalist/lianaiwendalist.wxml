@@ -3,7 +3,7 @@
     <top-bar id="topBarView" comtype="{{2}}" pageTitle="{{'我的问答'}}"></top-bar>
 
     <view class="scrollView" style="height:{{topViewHeight}}px">
-        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="onReachBottom">
+        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
             <view class="topLine"></view>
             <view class="pinglunView">
 

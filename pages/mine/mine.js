@@ -42,9 +42,9 @@ Page({
                 }
             }
         });
-		this.setData({
-			uid: wx.getStorageSync("u_id"),
-		})
+        this.setData({
+            uid: wx.getStorageSync("u_id"),
+        })
     },
 
     onTabItemTap: function() {
@@ -140,9 +140,9 @@ Page({
     //设置剪切板内容
     copyuid: function() {
         wx.setClipboardData({
-			data: this.data.uid,
+            data: this.data.uid,
             success(res) {
-				util.toast("成功复制到剪切板")
+                util.toast("成功复制到剪切板")
             }
         })
     },

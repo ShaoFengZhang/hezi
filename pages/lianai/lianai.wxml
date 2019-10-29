@@ -65,7 +65,7 @@
                     <view>暂时还没有数据亲~</view>
                 </view>
 
-                <view wx:if="{{commentArr.length}}" class="commentAllBtn" catchtap="onReachBottom">全部{{commentsNum}}条评论 ></view>
+                <view wx:if="{{commentArr.length}}" class="commentAllBtn" catchtap="nextpage">全部{{commentsNum}}条评论 ></view>
 
 
             </view>
@@ -94,7 +94,7 @@
             <view class="problemSubmit">
 
 				<view class="botpriceView">
-					<view class="priceView" style="font-size:36rpx;">合计：¥55</view>
+					<view class="priceView" style="font-size:36rpx;">合计：¥69</view>
 					<view style="color:#999999;font-size:28rpx;">含有5次追问机会</view>
 				</view>
 

@@ -29,3 +29,25 @@
 	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px;color:white;"> {{pageTitle}} </view>
 
 </view>
+
+<view class='topBarView dazhuanpan' wx:if="{{comtype==4}}" style="height:{{topbarHeight}}px;">
+
+    <view  class="btnBox" style="bottom:{{posibottom}}px;background-image: url({{bg2}});" >
+		<view catchtap="backtopPage"></view>
+		<view catchtap="backHome"></view>
+    </view>
+
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px;color:white;"> {{pageTitle}} </view>
+
+</view>
+
+<view class='topBarView' wx:if="{{comtype==5}}" style="height:{{topbarHeight}}px;">
+
+    <view  class="btnBox" style="bottom:{{posibottom}}px;background-image: url({{bg2}});" >
+		<view catchtap="backtopPage"></view>
+		<view catchtap="backHome"></view>
+    </view>
+
+	<view class="wxGameTititle" style="margin-top:{{topbarHeight-posibottom-32}}px;color:white;"> {{pageTitle}} </view>
+
+</view>

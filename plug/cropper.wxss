@@ -3,7 +3,13 @@
     overflow: hidden;
     position: relative;
     z-index: 9999;
-	background-color:#fff;
+	/* background-color:#fff; */
+}
+
+.dazhuanpan{
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 .mineView, .mineView image {

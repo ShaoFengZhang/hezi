@@ -29,9 +29,16 @@ Page({
             this.questioOver(options.questionId)
 			
         }
+		if (app.globalData.userInfo){
+			this.setData({
+				userInfo: app.globalData.userInfo,
+				hasUserInfo: true,
+			});
+		}
     },
 
     onShow: function() {
+
     },
 
     onShareAppMessage: function() {

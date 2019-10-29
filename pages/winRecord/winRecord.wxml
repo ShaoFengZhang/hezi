@@ -1,0 +1,35 @@
+<view class="bg">
+
+    <top-bar id="topBarView" pageTitle="{{'中奖记录'}}" style="z-index:9999;"></top-bar>
+
+    <view class="listview" style="height:{{topViewHeight}}px">
+        <view class="scrollView">
+            <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
+
+                <view class="winrecordView" wx:for="{{winrecordArr}}" wx:key="{{index}}">
+
+                    <view class="timeview">
+                        <text>{{item.time}}</text>
+                    </view>
+
+                    <view class="deatilsview oneEllipsis">
+                        <text>{{item.title}}</text>
+                    </view>
+
+
+                </view>
+
+                <view class='nocom' wx:if="{{!winrecordArr.length}}">
+                    <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                    <view>暂时还没有数据亲~</view>
+                </view>
+
+            </scroll-view>
+
+        </view>
+
+
+    </view>
+
+
+</view>

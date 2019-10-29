@@ -1,0 +1,36 @@
+<view class="bg">
+
+    <top-bar id="topBarView" comtype="{{4}}" pageTitle="{{'大转盘'}}"></top-bar>
+
+    <view class="recordingView">
+        <swiper vertical="{{true}}" circular="{{true}}" autoplay="{{1}}" interval="{{2000}}" style="height:60rpx;">
+            <block wx:for="{{recordingArr}}" wx:key="index">
+                <swiper-item class='swiper-item'>
+                    <view class="swipericon">
+                        <image src="{{item.avatarurl}}" />
+                    </view>
+                    <view class="swiperTxt">{{item.nickname}}抽中了{{item.title}}</view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class="winningRecord" catchtap="goToLotteryRecord">
+        <image src="https://duanju.58100.com/upload/new/winRecord.png" />
+    </view>
+
+    <view class="dazhuangpan">
+
+        <view class="zhuanpanditu">
+            <image animation="{{animationData}}" src="https://duanju.58100.com/upload/new/dazhuanpan.png" />
+        </view>
+
+        <view class="pointer" catchtap="startLottery">
+            <image src="https://duanju.58100.com/upload/new/pointer.png" />
+			<button style="z-index:10000;" catchtap="catchtap" wx:if="{{canIUse && !hasUserInfo }}" id="shareBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+        </view>
+
+
+    </view>
+
+</view>

@@ -1,0 +1,6 @@
+<view class='bg'>
+
+    <top-bar id="topBarView" comtype="{{5}}" pageTitle="{{'卖货'}}"></top-bar>
+
+
+</view>

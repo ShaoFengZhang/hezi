@@ -2,7 +2,7 @@
     <top-bar id="topBarView" comtype="{{2}}" colortype="{{1}}"></top-bar>
     <view style="height:{{scrollHeight-10}}px">
 
-        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="onReachBottom">
+        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
             <view class="bgBox">
                 <view class="mubanItem" wx:for="{{contentArr}}" wx:key="{{index}}" data-index="{{index}}" catchtap="gotomaking">
                     <image src="{{srcDomin}}/newadmin/Uploads/{{item.xiaotu_url}}" />

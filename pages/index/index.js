@@ -39,6 +39,12 @@ Page({
                     path: '/pages/lianai/lianai',
                     type: 'inside',
                 },
+				{
+					icon: 'https://duanju.58100.com/upload/new/lianai1.png',
+					text: '领鸡蛋',
+					path: '/pages/mallindex/mallindex',
+					type: 'inside',
+				},
                 {
                     icon: 'https://duanju.58100.com/upload/new/lianxing2.png',
                     text: '测脸型',

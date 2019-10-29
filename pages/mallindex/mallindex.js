@@ -4,7 +4,10 @@ const app = getApp();
 Page({
 
 	data: {
-		questionsArr:[],
+		userInfo: {},
+		hasUserInfo: false,
+		canIUse: wx.canIUse('button.open-type.getUserInfo'),
+		questionsArr: [],
 	},
 
 	onLoad: function (options) {
@@ -19,6 +22,13 @@ Page({
 
 		this.loadlianaiProblem()
 		this.loadExpertDetails()
+
+		if (app.globalData.userInfo) {
+			this.setData({
+				userInfo: app.globalData.userInfo,
+				hasUserInfo: true,
+			});
+		}
 	},
 
 	onShow: function () {
@@ -29,8 +39,8 @@ Page({
 
 	},
 
-	gotoDeatils:function(e){
-		let id=e.currentTarget.dataset.id
+	gotoDeatils: function (e) {
+		let id = e.currentTarget.dataset.id
 		wx.navigateTo({
 			url: `/pages/lianaiwentixiangqing/lianaiwentixiangqing?questionId=${id}&expertId=${this.data.expertId}`,
 		})
@@ -84,7 +94,7 @@ Page({
 				_this.setData({
 					expertIcon: 'http://duanju.58100.com/qinggan/Uploads/' + res.list.icon,
 					expertName: res.list.name,
-					expertId:res.list.id,
+					expertId: res.list.id,
 				});
 			}
 		})
