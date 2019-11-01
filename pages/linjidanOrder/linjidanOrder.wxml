@@ -1,0 +1,36 @@
+<view class="bg">
+
+    <top-bar id="topBarView" pageTitle="{{'兑换记录'}}" style="z-index:9999;"></top-bar>
+
+    <view class="scrollView" style="height:{{topViewHeight}}px">
+        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
+
+            <view class="recordView" wx:for="{{recordArr}}" wx:key="{{index}}">
+                <view class="userIcon">
+                    <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                </view>
+
+                <view class="recordDeails">
+					<view style="font-size:32rpx;color:#282828">XXX任务</view>
+					<view style="font-size:28rpx;color:#A4A4A4">2017-10-21 10:46:12</view>
+                </view>
+
+                <view class="bansvew">
+                    <text>+52金币</text>
+                </view>
+            </view>
+
+
+
+
+            <!-- 暂时没有数据 -->
+            <view class='nocom' wx:if="{{!recordArr.length}}">
+                <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                <view>暂时还没有数据亲~</view>
+            </view>
+
+        </scroll-view>
+
+    </view>
+
+</view>

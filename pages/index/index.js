@@ -40,7 +40,7 @@ Page({
                     type: 'inside',
                 },
 				{
-					icon: 'https://duanju.58100.com/upload/new/lianai1.png',
+					icon: 'https://duanju.58100.com/upload/new/lingjidan.png',
 					text: '领鸡蛋',
 					path: '/pages/mallindex/mallindex',
 					type: 'inside',

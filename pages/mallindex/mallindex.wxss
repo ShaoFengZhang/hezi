@@ -1,67 +1,422 @@
-.bg{
-	color: #282828;
+.bg {
+    background-color: #3ab0ff;
+    background-repeat: no-repeat;
+    background-size: 750rpx 1334rpx;
+    background-position: bottom left;
+    background-image: url('https://duanju.58100.com/upload/new/goldHome.png');
 }
 
-.scrollView {
+/* 首页 */
+
+.mallHomeBigView {
     width: 100%;
-	background-color: #F3F5F9;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    font-size: 28rpx;
 }
 
-.topLine{
-	width: 100%;
-	height: 2rpx;
-	background-color: #E7E7E7;
+.topswiper {
+    margin: 40rpx 0 0 40rpx;
+    background: rgba(40, 40, 40, 0.6);
 }
 
-.pinglunView {
-    box-sizing: border-box;
-	background-color: #F3F5F9;
+.topswiper, swiper, .swiper-item {
+    width: 480rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    overflow: hidden;
 }
 
-.listView{
-	box-sizing: border-box;
-	background-color: #fff;
-	padding: 40rpx 40rpx 30rpx;
-	margin-bottom: 16rpx;
-}
-
-.userInfo {
-    height: 82rpx;
+.swiper-item {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.userIocn, .userIocn image {
-    width: 74rpx;
-    height: 74rpx;
+.swipericon, .swipericon image {
+    width: 48rpx;
+    height: 48rpx;
     border-radius: 50%;
 }
 
-.userName {
-    width: 554rpx;
-    height: 82rpx;
+.swipericon {
+    margin-right: 16rpx;
+    margin-left: 6rpx;
+}
+
+.swiperTxt {
+    width: 380rpx;
+}
+
+.userInfoView {
+    width: 480rpx;
+    height: 104rpx;
+    margin: 12rpx 0 0 40rpx;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.nameView {
-    font-size: 32rpx;
+.userIcon {
+    width: 100rpx;
+    height: 100rpx;
+    border: 2rpx solid #fff;
+    border-radius: 50%;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    margin-right: -40rpx;
+    z-index: 99;
 }
 
-.timeView {
-    color: #999;
-}
-
-.commentContent {
-	font-size: 28rpx;
+.username {
+    max-width: 414rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: rgba(40, 40, 40, 0.6);
+    border-radius: 30rpx;
     box-sizing: border-box;
-    padding-left: 118rpx;
-    color: #666;
-    line-height: 44rpx;
+    padding: 0 10rpx 0 50rpx;
+}
+
+.rightNavIcon {
+    width: 104rpx;
+    position: absolute;
+    top: 14rpx;
+    right: 24rpx;
+}
+
+.rigntSmallIcon {
+    margin-bottom: 42rpx;
+}
+
+.rigntSmallIcon, .rigntSmallIcon image {
+    width: 104rpx;
+    height: 104rpx;
+}
+
+/* 底部商店和按钮 */
+
+.storeBottomView {
+    width: 100%;
+    height: 712rpx;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.storeView {
+    width: 442rpx;
+    height: 488rpx;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom left;
+    background-image: url('https://duanju.58100.com/upload/new/mallHomeIcon.png');
+    position: relative;
+}
+
+.storeView .huowuitem {
+    position: absolute;
+}
+
+.huowuBox {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.huowuBox view {
+    opacity: 0;
+}
+
+.opcity1 view {
+    animation: opcityjindu 3s forwards; 
+}
+
+@keyframes opcityjindu {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.lianyiqun {
+    top: 212rpx;
+    left: 82rpx;
+}
+
+.baobao {
+    top: 270rpx;
+    left: 182rpx;
+}
+
+.xiangshui {
+    top: 322rpx;
+    left: 192rpx;
+}
+
+.zhijin {
+    top: 182rpx;
+    left: 302rpx;
+}
+
+.shizhong {
+    top: 242rpx;
+    left: 312rpx;
+}
+
+.xiaohaizi {
+    position: absolute;
+    left: 204rpx;
+    bottom: 224rpx;
+}
+
+.xiaohaizi, .xiaohaizi image {
+    width: 204rpx;
+    height: 142rpx;
+}
+
+.bottomBtnview {
+    width: 590rpx;
+    height: 144rpx;
+    position: absolute;
+    left: 80rpx;
+    bottom: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.botBtn, .botBtn image {
+    width: 128rpx;
+    height: 144rpx;
+}
+
+/* 好友列表 */
+
+.myFrinedView {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(40, 40, 40, 0.7);
+    z-index: 999;
+}
+
+.friendList {
+    width: 100%;
+    height: 1002rpx;
+    position: absolute;
+    bottom: -536px;
+    left: 0;
+    background: rgba(255, 250, 233, 1);
+    border-radius: 64rpx 64rpx 0px 0px;
+}
+
+.titleIcon {
+    width: 750rpx;
+    height: 160rpx;
+    margin-top: -66rpx;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-image: url('https://duanju.58100.com/upload/new/friendTitleicon.png');
+    overflow: hidden;
+}
+
+.closeview {
+    width: 90rpx;
+    height: 96rpx;
+    position: absolute;
+    top: 22rpx;
+    right: 20rpx;
+}
+
+.titletxt {
+    color: #bb4e0f;
+    font-size: 44rpx;
+    text-align: center;
+    line-height: 60rpx;
     margin-top: 6rpx;
 }
 
+.scrollView {
+    width: 710rpx;
+    height: 882rpx;
+    margin: 0rpx auto 0;
+}
+
+.frienditem {
+    width: 100%;
+    height: 120rpx;
+    background: rgba(254, 255, 255, 1);
+    box-shadow: 0px 8rpx 16rpx 0px rgba(255, 230, 189, 1);
+    border-radius: 16rpx;
+    margin-bottom: 24rpx;
+    box-sizing: border-box;
+    padding: 0 0rpx 0 54rpx;
+    display: flex;
+    align-items: center;
+    line-height: 44rpx;
+    font-size: 28rpx;
+}
+
+.numview {
+    width: 58rpx;
+    color: #999;
+    font-size: 32rpx;
+    margin-right: 38rpx;
+}
+
+.friendIcon, .friendIcon image {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+}
+
+.friendName {
+    font-size: 32rpx;
+    color: #282828;
+    width: 344rpx;
+    margin-left: 18rpx;
+}
+
+.userBins {
+    color: #ff493a;
+}
+
+.nofriend {
+    width: 100%;
+    text-align: center;
+    font-size: 32rpx;
+    color: #c8b2a5;
+    margin-top: 34rpx;
+}
+
+.shareBtnView {
+    position: relative;
+}
+
+.shareTxt {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 118rpx;
+}
+
+.smallbtn {
+    width: 144rpx;
+    height: 60rpx;
+    background: linear-gradient(180deg, rgba(254, 250, 205, 1) 0%, rgba(254, 212, 56, 1) 100%);
+    box-shadow: 0px 8rpx 16rpx 0px rgba(254, 186, 143, 1);
+    border-radius: 30rpx;
+    text-align: center;
+    color: #b53f03;
+    line-height: 60rpx;
+}
+
+/* 任务列表 */
+
+.taskpresent {
+    color: #a68378;
+    font-size: 32rpx;
+    text-align: center;
+    width: 594rpx;
+    margin: 0 auto;
+}
+
+.taskscrollview {
+    width: 710rpx;
+    height: 762rpx;
+    margin: 48rpx auto 0;
+}
+
+.taskitem {
+    padding: 12rpx 0;
+    box-sizing: content-box;
+    min-height: 120rpx;
+    position: relative;
+}
+
+.taskIcon {
+    margin-right: 10rpx;
+}
+
+.taskIcon, .taskIcon image {
+    width: 122rpx;
+    height: 122rpx;
+}
+
+.taskdetails {
+    width: 380rpx;
+    min-height: 80rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    line-height: 40rpx;
+}
+
+.taskTile {
+    color: #282828;
+    font-size: 36rpx;
+    margin-bottom: 6rpx;
+}
+
+.taskdes {
+    color: #a4a4a4;
+}
+
+.taskBtnview {
+    color: #b53f03;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 60rpx;
+    width: 144rpx;
+    height: 60rpx;
+    background: linear-gradient(180deg, rgba(254, 250, 205, 1) 0%, rgba(254, 212, 56, 1) 100%);
+    box-shadow: 0px 8rpx 16rpx 0px rgba(254, 186, 143, 1);
+    border-radius: 30rpx;
+    margin-left: 28rpx;
+}
+
+.haveoverBtn, .haveoverBtn image {
+    width: 172rpx;
+    height: 88rpx;
+}
+
+/* 金币领取弹窗 */
+
+.getgoldView {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(40, 40, 40, 0.7);
+    overflow: hidden;
+}
+
+.goldBody {
+    margin: 240rpx auto 0;
+    position: relative;
+}
+
+.goldBody, .goldBody image {
+    width: 624rpx;
+    height: 682rpx;
+}
+
+.taskgoldtxt {
+    width: 600rpx;
+    color: #fe5a00;
+    font-size: 60rpx;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 100rpx;
+}

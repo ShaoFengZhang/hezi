@@ -4,6 +4,7 @@
 
     <view class="listview" style="height:{{topViewHeight}}px">
         <view class="scrollView">
+
             <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
 
                 <view class="winrecordView" wx:for="{{winrecordArr}}" wx:key="{{index}}">
@@ -16,7 +17,6 @@
                         <text>{{item.title}}</text>
                     </view>
 
-
                 </view>
 
                 <view class='nocom' wx:if="{{!winrecordArr.length}}">
@@ -28,8 +28,6 @@
 
         </view>
 
-
     </view>
-
 
 </view>

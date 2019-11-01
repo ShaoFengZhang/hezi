@@ -1,5 +1,6 @@
 .bg{
-	background-color: #F56134;
+	/* background-color: #F56134; */
+	background:linear-gradient(191deg,rgba(255,202,50,1) 0%,rgba(245,97,52,1) 100%);
 }
 
 .listview{

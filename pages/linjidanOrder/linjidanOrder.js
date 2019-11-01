@@ -4,7 +4,7 @@ const app = getApp();
 Page({
 
 	data: {
-		recordArr: [1,2]
+		recordArr: []
 	},
 
 	onLoad: function (options) {

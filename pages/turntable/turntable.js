@@ -201,6 +201,8 @@ Page({
 
 	//跳转抽奖记录
 	goToLotteryRecord:function(){
-
+		wx.navigateTo({
+			url: '/pages/winRecord/winRecord',
+		})
 	},
 })

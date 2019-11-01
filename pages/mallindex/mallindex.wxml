@@ -2,5 +2,208 @@
 
     <top-bar id="topBarView" comtype="{{5}}" pageTitle="{{'卖货'}}"></top-bar>
 
+    <view class="mallHomeBigView" style="height:{{topViewHeight}}px">
+
+        <!-- 抽奖记录轮播 -->
+        <view class="topswiper">
+            <swiper vertical="{{true}}" circular="{{true}}" autoplay="{{1}}" interval="{{2000}}" style="height:60rpx;">
+                <block wx:for="{{recordsArr}}" wx:key="index">
+                    <swiper-item class='swiper-item'>
+                        <view class="swipericon">
+                            <image src="{{'https://duanju.58100.com/upload/new/goldHome.png'}}" />
+                        </view>
+                        <view class="swiperTxt oneEllipsis">{{item.nickname}}抽中了{{item.title}}</view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+
+        <!-- 头像昵称 -->
+        <view class="userInfoView" data-path="/pages/mine/mine" catchtap="navevent">
+            <view class="userIcon">
+                <open-data type="userAvatarUrl"></open-data>
+            </view>
+
+            <view class="username oneEllipsis">
+                <open-data type="userNickName"></open-data>
+            </view>
+        </view>
+
+        <!-- 右侧导航小图标 -->
+        <view class="rightNavIcon">
+            <view data-path="{{item.path}}" catchtap="navevent" class="rigntSmallIcon" wx:for="{{rigntSmallIconArr}}" wx:key="{{index}}">
+                <image src="{{item.icon}}" />
+            </view>
+        </view>
+
+        <!-- 底部view -->
+
+        <view class="storeBottomView">
+
+            <view class="storeView">
+                <view class="huowuBox {{ifjinhuo?'opcity1':null}}">
+                    <view class="lianyiqun huowuitem">
+                        <image style="width:44rpx;height:150rpx;" src="https://duanju.58100.com/upload/new/lianyiqun.png" />
+                    </view>
+                    <view class="baobao huowuitem">
+                        <image style="width:42rpx;height:42rpx;" src="https://duanju.58100.com/upload/new/baobao.png" />
+                    </view>
+                    <view class="xiangshui huowuitem">
+                        <image style="width:26rpx;height:36rpx;" src="https://duanju.58100.com/upload/new/xiangshui.png" />
+                    </view>
+                    <view class="zhijin huowuitem">
+                        <image style="width:50rpx;height:38rpx;" src="https://duanju.58100.com/upload/new/zhijin.png" />
+                    </view>
+                    <view class="shizhong huowuitem">
+                        <image style="width:28rpx;height:40rpx;" src="https://duanju.58100.com/upload/new/shizhong.png" />
+                    </view>
+                </view>
+
+            </view>
+
+
+            <view class="xiaohaizi">
+                <image src="https://duanju.58100.com/upload/new/xiaohaizi.png" />
+            </view>
+
+            <view class="bottomBtnview">
+                <view class="botBtn" catchtap="showhidefriendview">
+                    <image src="https://duanju.58100.com/upload/new/mallhomefriendbtn1.png" />
+                </view>
+                <view class="botBtn" catchtap="showhidetaskview">
+                    <image src="https://duanju.58100.com/upload/new/mallhomegetbensbtn1.png" />
+                </view>
+                <view class="botBtn" catchtap="jinhuoclickevent">
+                    <image src="https://duanju.58100.com/upload/new/mallhomegetgoodsbtn1.png" />
+                </view>
+            </view>
+
+        </view>
+
+        <button style="z-index:10000;" catchtap="catchtap" wx:if="{{canIUse && !hasUserInfo }}" id="shareBtn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+
+    </view>
+
+
+    <!-- 好友列表 -->
+    <view class="myFrinedView" wx:if="{{ifshowfriendview}}">
+
+        <view class="friendList" animation="{{animationTask}}">
+
+            <view class="titleIcon">
+
+                <view class="titletxt">我的朋友</view>
+
+                <view class="closeview" catchtap="showhidefriendview"></view>
+            </view>
+
+            <view class="scrollView">
+                <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
+
+                    <view class="frienditem shareBtnView">
+                        <view class="shareTxt">
+                            <view style="font-size:32rpx;color:#282828;">邀请好友一起领取货币</view>
+                            <view style="font-size:28rpx;color:#A4A4A4;">每邀请一位好友获得30枚货币</view>
+                            <button id="shareBtn" data-info="friendbtn" open-type="share"></button>
+                        </view>
+
+                        <view class="smallbtn">
+                            去邀请
+                        </view>
+                    </view>
+
+                    <view class="frienditem" wx:for="{{friendArr}}" wx:key="{{index}}">
+
+                        <view class="numview">999</view>
+
+                        <view class="friendIcon">
+                            <image src="https://duanju.58100.com/upload/new/nodata.png" />
+                        </view>
+
+                        <view class="friendName oneEllipsis">
+                            妙人SHOW
+                        </view>
+
+                        <view class="userBins">
+                            {{20}}金币
+                        </view>
+
+                    </view>
+
+                    <view wx:if="{{friendArr.length}}" class="nofriend">没有更多朋友啦</view>
+
+                    <!-- 暂时没有数据 -->
+                    <view class='nocom' wx:if="{{!friendArr.length}}">
+                        <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                        <view>暂时还没有数据亲~</view>
+                    </view>
+
+                </scroll-view>
+
+            </view>
+
+        </view>
+
+    </view>
+
+    <!-- 任务列表 -->
+    <view class="taskView myFrinedView" wx:if="{{ifshowtaskview}}">
+
+        <view class="friendList" animation="{{animationTask}}">
+
+            <view class="titleIcon">
+
+                <view class="titletxt">货币任务</view>
+
+                <view class="closeview" catchtap="showhidetaskview"></view>
+            </view>
+
+            <view class="taskpresent">完成任务会获得货币，超出
+                <text style="color:#FE5A00">当天24点</text>未领取货币会消失</view>
+
+            <view class="scrollView taskscrollview">
+                <scroll-view scroll-y="true" style="height: 100%;">
+
+                    <view data-txt="{{item.txt}}" data-type="{{item.type}}" catchtap="{{item.event}}" class="frienditem taskitem" wx:for="{{taskArr}}" wx:key="{{index}}">
+
+                        <view class="taskIcon">
+                            <image src="{{item.icon}}" />
+                        </view>
+
+                        <view class="taskdetails">
+                            <view class="taskTile">{{item.title}}</view>
+                            <view class="taskdes">{{item.destxt}}</view>
+                        </view>
+
+                        <view class="taskBtnview" wx:if="{{!item.ifover}}">
+                            {{item.btnTxt}}
+                        </view>
+
+                        <view class="haveoverBtn" wx:if="{{item.ifover}}" catchtap="haveoverEvent">
+                            <image src="https://duanju.58100.com/upload/new/haveover.png" />
+                        </view>
+
+                        <button catchtap="catchtap" data-info="{{item.shareinfo}}" wx:if="{{item.ifShare && !item.ifover}}" id="shareBtn" open-type="share"></button>
+
+                    </view>
+
+                </scroll-view>
+
+            </view>
+
+        </view>
+    </view>
+
+    <!-- 金币领取弹窗 -->
+    <view class="getgoldView" wx:if="{{ifgetgoldview}}" catchtap="showhidegetglobview">
+
+        <view class="goldBody">
+            <image src="https://duanju.58100.com/upload/new/getgold.png" />
+            <view class="taskgoldtxt">
+                {{goldtxt}}
+            </view>
+        </view>
+
+    </view>
 
 </view>

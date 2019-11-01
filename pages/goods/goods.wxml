@@ -1,2 +1,47 @@
-<!--pages/goods/goods.wxml-->
-<text>pages/goods/goods.wxml</text>
+<view class="bg">
+
+    <top-bar id="topBarView" pageTitle="{{'积分商城'}}" style="z-index:9999;"></top-bar>
+
+    <view class="scrollView" style="height:{{topViewHeight}}px">
+        <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
+
+			<view class="goodsListView">
+
+				<view class="goodsitem">
+					<view class="goodsicon">
+						<image src="https://duanju.58100.com/newadmin/Uploads/201909/5d7082c7d79f1.png" />
+						
+						<view class="baoyou">包邮</view>
+					</view>
+
+					<view class="oneEllipsis" style="color:#282828;margin-bottom:12rpx;">鸡蛋20个</view>
+					<view class="priceview">
+						<view  style="color:#FE5A00;">20兑换币</view>
+						<view  style="color:#999999;">1人次/周</view>	
+						<!-- <view  style="color:#999999;">剩余10件</view>	 -->
+					</view>
+
+					<view class="exchangeBtn goodsBtn">
+						立即兑换
+					</view>
+
+					<!-- <view class="nonumBtn goodsBtn">
+						抢购一空
+					</view> -->
+
+				</view>
+
+			</view>
+
+
+            <!-- 暂时没有数据 -->
+            <view class='nocom' wx:if="{{!recordArr.length}}">
+                <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                <view>暂时还没有数据亲~</view>
+            </view>
+
+        </scroll-view>
+
+    </view>
+
+</view>

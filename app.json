@@ -20,7 +20,8 @@
 		"pages/mallindex/mallindex",
 		"pages/currencyRecord/currencyRecord",
 		"pages/goods/goods",
-		"pages/winRecord/winRecord"
+		"pages/winRecord/winRecord",
+		"pages/linjidanOrder/linjidanOrder"
 	],
 	"window": {
 		"navigationStyle": "custom"
