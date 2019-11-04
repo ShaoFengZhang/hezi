@@ -4,6 +4,13 @@ const app = getApp();
 Page({
 
     data: {
+		//用户售卖状态
+		zhuangtaiTxt:'',
+		zhuangtaiTxt:'售卖中',
+		zhuangtaiTxt:'收取兑换币吧',
+		//是否有货币可领
+		ifyouhuobikeling:0,
+		duihuanbinum:1,
 		userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -11,6 +18,11 @@ Page({
 		animationTask:null,
         ifshowfriendview: 0,
         ifshowtaskview: 0,
+		ifshowclickmask:0,
+		ifshowqunmaskview:0,
+		shownomorefriend:0,
+		showxiaohaizi:1,
+		ifgetduihuanbi:0,
         ifgetgoldview: 0,
         friendArr: [],
         //任务列表
@@ -150,7 +162,7 @@ Page({
             // },
         ],
         //轮播数据
-        recordsArr: [1, 2],
+        recordsArr: [],
         //右侧小图标
         rigntSmallIconArr: [{
                 icon: 'https://duanju.58100.com/upload/new/smallMallIcon.png',
@@ -179,8 +191,6 @@ Page({
         this.rows = 10;
         this.cangetData = true;
 
-		this.loadtaskdate();
-
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -204,7 +214,7 @@ Page({
 				// 用户点击了【关闭广告】按钮
 				if (res && res.isEnded) {
 					//完整观看
-					_this.addScore()
+					_this.gettaskgold(5, '10货币');
 				} else {
 					util.toast('需要完整观看视频哦~')
 				}
@@ -213,7 +223,7 @@ Page({
     },
 
     onShow: function() {
-
+		this.loadswiperData();
     },
 
     onShareAppMessage: function(e) {
@@ -223,13 +233,13 @@ Page({
             if (info == "friendbtn") {
                 return {
                     title: '领鸡蛋好友列表分享',
-                    path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}`
+                    path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
                 }
             };
 			if (info == "yaoqinghaoyou"){
 				return {
 					title: '任务栏邀请好友按钮分享',
-					path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}`
+					path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
 				}
 			}
 
@@ -244,7 +254,7 @@ Page({
 
         return {
             title: '领鸡蛋右上角胶囊按钮分享',
-            path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}`
+			path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
         }
     },
 
@@ -253,34 +263,33 @@ Page({
     nextpage: function() {
         if (this.cangetData) {
             this.page++;
-            this.loadlianaiProblem();
+			this.loadfrienddata();
         } else {
-            util.toast('没有更多数据了')
         }
     },
 
     //加载好友数据
-    loadlianaiProblem: function() {
+    loadfrienddata: function() {
         let _this = this;
-		let url = loginApi.domin + '/home/index/user_question';
+		let url = loginApi.domin + '/home/index/myfriend';
         loginApi.requestUrl(_this, url, "POST", {
             page: this.page,
             len: this.rows,
             "uid": wx.getStorageSync("u_id"),
         }, function(res) {
             if (res.status == 1) {
-                if (res.question.length < _this.rows) {
+                if (res.friend.length < _this.rows) {
                     _this.cangetData = false;
+					_this.setData({
+						shownomorefriend:1,
+					})
                 }
-
-                if (res.question.length == 0) {
+				if (res.friend.length == 0) {
                     _this.cangetData = false;
-                    _this.page == 1 ? null : _this.page--;
-                    util.toast("暂无更多更新");
                     return;
                 };
                 _this.setData({
-                    questionsArr: _this.data.questionsArr.concat(res.question),
+					friendArr: _this.data.friendArr.concat(res.friend),
                 });
             }
         })
@@ -306,14 +315,17 @@ Page({
 				if (res.kaizhang) {
 					_this.data.taskArr[2].ifover = 1;
 				}
-				if (res.shipin) {
-					_this.data.taskArr[0].ifover = 1;
+				if (res.shipin==5) {
+					_this.data.taskArr[4].ifover = 1;
 				}
 				if (res.daguanggao) {
 					_this.data.taskArr[6].ifover = 1;
 				}
 				if (res.jingshang) {
 					_this.data.taskArr[7].ifover = 1;
+				}
+				if (res.qiandao) {
+					_this.data.taskArr[5].ifover = 1;
 				}
 
 				_this.setData({
@@ -322,6 +334,21 @@ Page({
             }
         })
     },
+
+	//加载首页轮播数据
+	loadswiperData:function(){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/rand_record';
+		loginApi.requestUrl(_this, url, "POST", {
+		}, function (res) {
+			if (res.status == 1) {
+				
+				_this.setData({
+					recordsArr: res.exchange,
+				});
+			}
+		})
+	},
 
     //router跳转
     navevent: function(e) {
@@ -338,8 +365,15 @@ Page({
         })
 		if (this.data.ifshowfriendview) {
 			this.animationfun();
+			this.loadfrienddata();
 		} else {
 			this.animationfun2();
+			this.page = 1;
+			this.rows = 10;
+			this.cangetData = true;
+			this.setData({
+				friendArr: [],
+			})
 		}
     },
 
@@ -350,6 +384,7 @@ Page({
         });
 		if (this.data.ifshowtaskview){
 			this.animationfun();
+			this.loadtaskdate();
 		}else{
 			this.animationfun2();
 		}
@@ -361,6 +396,35 @@ Page({
             ifgetgoldview: !this.data.ifgetgoldview
         })
     },
+
+	//显示隐藏获取兑换币弹窗
+	showhidegetduihuanbiview:function(){
+		this.setData({
+			ifgetduihuanbi: !this.data.ifgetduihuanbi,
+		})
+	},
+
+	//显示隐藏点击弹窗
+	showhideclickmask:function(){
+		this.setData({
+			ifshowclickmask: !this.data.ifshowclickmask,
+			showxiaohaizi: !this.data.ifshowclickmask?0:1,
+		})
+	},
+
+	hideclickMask:function(){
+		this.setData({
+			ifshowclickmask: 0,
+			showxiaohaizi:1,
+		})
+	},
+
+	//显示隐藏群弹窗
+	showhidequnmask:function(){
+		this.setData({
+			ifshowqunmaskview: !this.data.ifshowqunmaskview,
+		})
+	},
 
 	//进货点击事件
 	jinhuoclickevent:function(){
@@ -374,24 +438,47 @@ Page({
 	taskclickevent:function(e){
 		let type = e.currentTarget.dataset.type;
 		let goldtxt = e.currentTarget.dataset.txt;
+		//店铺开业
 		if(type==1){
-			this.gettaskgold(type,goldtxt);
+			this.gettaskgold(type);
 		};
+		//货品上架
 		if(type==2){
 			this.showhidetaskview();
 		}
+		//开张大吉
 		if (type == 3) {
 			if (this.data.taskArr[2].ifover==1){
-				this.gettaskgold(type, goldtxt);
+				this.gettaskgold(type);
 			}else{
 				util.toast('进行中~')
 			}
 		}
-		
+
+		//放映厅
+		if (type == 5) {
+			this.adShow()
+		}
+
+		//早起签到
+		if (type == 6) {
+			this.gettaskgold(type);
+		}
+
+		//经商之道
+		if (type == 9) {
+			this.showhidetaskview();
+		}
+
+		//检查库存
+		if (type == 10) {
+			this.showhidetaskview();
+		}
+
 	},
 
 	//完成任务获取奖励
-	gettaskgold: function (type,goldtxt){
+	gettaskgold: function (type){
 		let _this = this;
 		let url = loginApi.domin + '/home/index/complete';
 		loginApi.requestUrl(_this, url, "POST", {
@@ -400,7 +487,8 @@ Page({
 		}, function (res) {
 			_this.loadtaskdate();
 			_this.setData({
-				goldtxt: goldtxt,
+				goldtxt: res.currency.slice(1),
+				ifshowtaskview: 0,
 			})
 			_this.showhidegetglobview()
 		})
@@ -489,4 +577,15 @@ Page({
 			_this.animation = null;
 		}, 500)
 	},
+
+	catchtap:function(){},
+
+	fuzhiqunhao:function(){
+		wx.setClipboardData({
+			data: 'bxz201809',
+			success(res) {
+				util.toast("成功复制到剪切板")
+			}
+		})
+	}
 })

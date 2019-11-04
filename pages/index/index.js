@@ -41,7 +41,7 @@ Page({
                 },
 				{
 					icon: 'https://duanju.58100.com/upload/new/lingjidan.png',
-					text: '领鸡蛋',
+					text: '免费领',
 					path: '/pages/mallindex/mallindex',
 					type: 'inside',
 				},

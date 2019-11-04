@@ -12,14 +12,16 @@
 	align-items: center;
 }
 
-.userIcon,.userIcon image{
+.userIcon{
 	width: 88rpx;
 	height: 88rpx;
 	border-radius: 50%;
+	margin-right: 20rpx;
+	overflow: hidden;
 }
 
 .userIcon{
-	margin-right: 20rpx;
+	
 }
 
 .recordDeails{

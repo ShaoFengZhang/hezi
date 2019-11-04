@@ -12,13 +12,10 @@
 	align-items: center;
 }
 
-.userIcon,.userIcon image{
+.userIcon{
 	width: 88rpx;
 	height: 88rpx;
 	border-radius: 50%;
-}
-
-.userIcon{
 	margin-right: 20rpx;
 }
 

@@ -81,6 +81,7 @@
     position: absolute;
     top: 14rpx;
     right: 24rpx;
+    z-index: 993;
 }
 
 .rigntSmallIcon {
@@ -96,7 +97,7 @@
 
 .storeBottomView {
     width: 100%;
-    height: 712rpx;
+    height: 850rpx;
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -104,15 +105,35 @@
     overflow: hidden;
 }
 
+.diamond {
+    margin: 0 auto;
+}
+
+.diamond, .diamond image {
+    width: 96rpx;
+    height: 96rpx;
+}
+
 .storeView {
     width: 442rpx;
-    height: 488rpx;
-    margin: 0 auto;
+    height: 536rpx;
+    margin: 14rpx auto 0;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom left;
-    background-image: url('https://duanju.58100.com/upload/new/mallHomeIcon.png');
+    background-image: url('https://duanju.58100.com/upload/new/mallHomeIcon1.png');
     position: relative;
+    z-index: 995;
+}
+
+.zhuangtaiTxt {
+    width: 100%;
+    height: 54rpx;
+    color: #fff;
+    font-size: 28rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 54rpx;
 }
 
 .storeView .huowuitem {
@@ -131,7 +152,7 @@
 }
 
 .opcity1 view {
-    animation: opcityjindu 3s forwards; 
+    animation: opcityjindu 3s forwards;
 }
 
 @keyframes opcityjindu {
@@ -145,34 +166,35 @@
 }
 
 .lianyiqun {
-    top: 212rpx;
+    top: 208rpx;
     left: 82rpx;
 }
 
 .baobao {
-    top: 270rpx;
+    top: 272rpx;
     left: 182rpx;
 }
 
 .xiangshui {
-    top: 322rpx;
+    top: 326rpx;
     left: 192rpx;
 }
 
 .zhijin {
-    top: 182rpx;
-    left: 302rpx;
+    top: 180rpx;
+    left: 306rpx;
 }
 
 .shizhong {
-    top: 242rpx;
-    left: 312rpx;
+    top: 238rpx;
+    left: 316rpx;
 }
 
 .xiaohaizi {
     position: absolute;
-    left: 204rpx;
-    bottom: 224rpx;
+    left: 218rpx;
+    bottom: 204rpx;
+    z-index: 995;
 }
 
 .xiaohaizi, .xiaohaizi image {
@@ -194,6 +216,15 @@
 .botBtn, .botBtn image {
     width: 128rpx;
     height: 144rpx;
+    position: relative;
+}
+
+image.youhuobikeling {
+    width: 120rpx;
+    height: 34rpx;
+    position: absolute;
+    top: 0;
+    right: -50rpx;
 }
 
 /* 好友列表 */
@@ -399,6 +430,7 @@
     left: 0;
     background: rgba(40, 40, 40, 0.7);
     overflow: hidden;
+    z-index: 999;
 }
 
 .goldBody {
@@ -419,4 +451,110 @@
     position: absolute;
     left: 0;
     bottom: 100rpx;
+}
+
+/* 点击列表弹窗 */
+
+.clickMask {
+    width: 100%;
+    height: 100vh;
+    background: rgba(40, 40, 40, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 993;
+}
+
+.maskIcon, .maskIcon image {
+    width: 104rpx;
+    height: 104rpx;
+}
+
+.maskIcon {
+    position: absolute;
+    bottom: 426rpx;
+    left: 314rpx;
+}
+
+.maskIcon1 {
+    animation: clickani1 0.5s forwards;
+}
+
+.maskIcon2 {
+    animation: clickani2 0.5s forwards;
+}
+
+.maskIcon3 {
+    animation: clickani3 0.5s forwards;
+}
+
+.maskIcon4 {
+    animation: clickani4 0.5s forwards;
+}
+
+@keyframes clickani1 {
+    from {
+        left: 314rpx;
+		bottom: 426rpx;
+    }
+
+    to {
+        left: 50rpx;
+		bottom: 556rpx;
+    }
+}
+
+@keyframes clickani2 {
+    from {
+        left: 314rpx;
+		bottom: 426rpx;
+    }
+
+    to {
+        left: 30rpx;
+		bottom: 396rpx;
+    }
+}
+
+@keyframes clickani3 {
+    from {
+        left: 314rpx;
+		bottom: 436rpx;
+    }
+
+    to {
+        left: 600rpx;
+		bottom: 556rpx;
+    }
+}
+
+@keyframes clickani4 {
+    from {
+       left: 314rpx;
+		bottom: 426rpx;
+    }
+
+    to {
+        left: 620rpx;
+		bottom: 396rpx;
+    }
+}
+
+/* 群弹窗 */
+.qunmaskbody,.qunmaskbody image{
+	width: 600rpx;
+	height: 876rpx;
+}
+
+.qunmaskbody{
+	margin: 228rpx auto 0;
+	position: relative;
+}
+
+.fuzhihot{
+	width: 400rpx;
+	height: 60rpx;
+	position: absolute;
+	left: 100rpx;
+	bottom: 120rpx;
 }

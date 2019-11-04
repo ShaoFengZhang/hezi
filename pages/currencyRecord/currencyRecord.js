@@ -4,7 +4,7 @@ const app = getApp();
 Page({
 
     data: {
-        recordArr: [1, 2]
+        recordArr: []
     },
 
     onLoad: function(options) {
@@ -17,7 +17,7 @@ Page({
 		this.page = 1;
 		this.rows = 10;
 		this.cangetData = true;
-		// this.getrecordlist();
+		this.getrecordlist();
 
     },
 
@@ -33,26 +33,26 @@ Page({
 	nextpage: function () {
 		if (this.cangetData) {
 			this.page++;
-			this.loadComment();
+			this.getrecordlist();
 		} else {
-			util.toast('没有更多数据了')
+			// util.toast('没有更多数据了')
 		}
 	},
 
 	getrecordlist: function() {
 		let _this = this;
-		let url = loginApi.domin + '/qinggan/index.php/Home/Xiaochengxu/recordlist';
+		let url = loginApi.domin + '/home/index/currency_record';
 		loginApi.requestUrl(_this, url, "POST", {
 			page: this.page,
 			len: this.rows,
-			expert_id: this.data.expert_id,
+			uid: wx.getStorageSync("u_id"),
 		}, function (res) {
 			if (res.status == 1) {
-				if (res.evaluate.length < _this.rows) {
+				if (res.record.length < _this.rows) {
 					_this.cangetData = false;
 				}
 				_this.setData({
-					recordArr: _this.data.commentArr.concat(res.evaluate),
+					recordArr: _this.data.recordArr.concat(res.record),
 				});
 			}
 		})

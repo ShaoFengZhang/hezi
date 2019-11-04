@@ -24,7 +24,6 @@
                         {{item.text}}
                     </view>
                 </view>
-
             </view>
 
             <view catchtap="showHidedAvisoryView" class="combtn questionBtn" wx:if="{{count!=5 && answerArr[answerArr.length-1].qa==1}}">

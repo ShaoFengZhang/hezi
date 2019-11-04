@@ -7,16 +7,16 @@
 
             <view class="recordView" wx:for="{{recordArr}}" wx:key="{{index}}">
                 <view class="userIcon">
-                    <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                    <open-data type="userAvatarUrl"></open-data>
                 </view>
 
                 <view class="recordDeails">
-					<view style="font-size:32rpx;color:#282828">XXX任务</view>
-					<view style="font-size:28rpx;color:#A4A4A4">2017-10-21 10:46:12</view>
+					<view style="font-size:32rpx;color:#282828">{{item.title}}</view>
+					<view style="font-size:28rpx;color:#A4A4A4">{{item.time}}</view>
                 </view>
 
                 <view class="bansvew">
-                    <text>+52金币</text>
+                    <text>{{item.currency}}货币</text>
                 </view>
             </view>
 

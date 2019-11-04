@@ -5,26 +5,26 @@
     <view class="scrollView" style="height:{{topViewHeight}}px">
         <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
 
-            <view class="recordView" wx:for="{{recordArr}}" wx:key="{{index}}">
+            <view class="recordView" wx:for="{{duihuanArr}}" wx:key="{{index}}">
                 <view class="userIcon">
-                    <image src='https://duanju.58100.com/upload/new/nodata.png' />
+                     <open-data type="userAvatarUrl"></open-data>
                 </view>
 
                 <view class="recordDeails">
-					<view style="font-size:32rpx;color:#282828">XXX任务</view>
-					<view style="font-size:28rpx;color:#A4A4A4">2017-10-21 10:46:12</view>
+					<view style="font-size:32rpx;color:#282828">{{item.title}}</view>
+					<view style="font-size:28rpx;color:#A4A4A4">{{item.time}}</view>
                 </view>
 
-                <view class="bansvew">
-                    <text>+52金币</text>
-                </view>
+                <!-- <view class="bansvew">
+                    <text>{{}}</text>
+                </view> -->
             </view>
 
 
 
 
             <!-- 暂时没有数据 -->
-            <view class='nocom' wx:if="{{!recordArr.length}}">
+            <view class='nocom' wx:if="{{!duihuanArr.length}}">
                 <image src='https://duanju.58100.com/upload/new/nodata.png' />
                 <view>暂时还没有数据亲~</view>
             </view>
