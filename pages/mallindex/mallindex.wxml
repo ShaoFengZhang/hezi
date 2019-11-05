@@ -19,8 +19,8 @@
         </view>
 
         <!-- 头像昵称 -->
-        <view class="userInfoView" data-path="/pages/mine/mine" catchtap="navevent">
-            <view class="userIcon">
+        <view class="userInfoView">
+            <view class="userIcon" data-path="/pages/mine/mine" catchtap="navevent">
                 <open-data type="userAvatarUrl"></open-data>
             </view>
 
@@ -28,6 +28,8 @@
                 <open-data type="userNickName"></open-data>
             </view>
         </view>
+
+		<view data-path="/pages/goods/goods" catchtap="navevent" class="duihuanbinumview">有{{usermoney}}个兑换币啦~快去商城兑换吧</view>
 
         <!-- 右侧导航小图标 -->
         <view class="rightNavIcon">
@@ -40,14 +42,15 @@
 
         <view class="storeBottomView">
 
-			<view class="diamond">
-				<image src="https://duanju.58100.com/upload/new/diamond.png" />
+			<view class="diamond" >
+				<image wx:if="{{userState==1}}" catchtap="shouquduihuanbi"  src="https://duanju.58100.com/upload/new/diamond.png" />
 			</view>
 
             <view class="storeView" catchtap="showhideclickmask">
 
 				<view class="zhuangtaiTxt">{{zhuangtaiTxt}}</view>
 
+				<!-- 货物 -->
                 <view class="huowuBox {{ifjinhuo?'opcity1':null}}">
                     <view class="lianyiqun huowuitem">
                         <image style="width:44rpx;height:150rpx;" src="https://duanju.58100.com/upload/new/lianyiqun.png" />
@@ -73,18 +76,24 @@
                 <image src="https://duanju.58100.com/upload/new/xiaohaizi.png" />
             </view>
 
+			<!-- 下边三个按钮 -->
             <view class="bottomBtnview">
                 <view class="botBtn" catchtap="showhidefriendview">
                     <image src="https://duanju.58100.com/upload/new/mallhomefriendbtn1.png" />
                 </view>
                 <view class="botBtn" catchtap="showhidetaskview">
                     <image src="https://duanju.58100.com/upload/new/mallhomegetbensbtn1.png" />
-					<image class="youhuobikeling" wx:if="{{ifyouhuobikeling}}" src="https://duanju.58100.com/upload/new/youhuobikeling.png" />
+					
+					<view  wx:if="{{ifyouhuobikeling}}" class="huobinumview">有货币可领</view>
                 </view>
                 <view class="botBtn" catchtap="jinhuoclickevent">
                     <image src="https://duanju.58100.com/upload/new/mallhomegetgoodsbtn1.png" />
+					<view class="huobinumview">{{usergolbnum}}</view>
                 </view>
             </view>
+
+			<!-- 库存热点 -->
+			<view class="kucunhot" data-path="/pages/currencyRecord/currencyRecord" catchtap="navevent"></view>
 
         </view>
 
@@ -173,7 +182,7 @@
             <view class="scrollView taskscrollview">
                 <scroll-view scroll-y="true" style="height: 100%;">
 
-                    <view data-txt="{{item.txt}}" data-type="{{item.type}}" catchtap="{{item.ifover?'haveoverEvent':item.event}}" class="frienditem taskitem" wx:for="{{taskArr}}" wx:key="{{index}}">
+                    <view class="frienditem taskitem" wx:for="{{taskArr}}" wx:key="{{index}}">
 
                         <view class="taskIcon">
                             <image src="{{item.icon}}" />
@@ -184,12 +193,16 @@
                             <view class="taskdes">{{item.destxt}}</view>
                         </view>
 
-                        <view class="taskBtnview" wx:if="{{!item.ifover}}">
-                            {{item.btnTxt}}
+                        <view catchtap="quwnchengfun" data-type="{{item.type}}" class="taskBtnview" wx:if="{{item.ifover==0}}">
+                            去完成
                         </view>
 
-                        <view class="haveoverBtn" wx:if="{{item.ifover}}">
-                            <image src="https://duanju.58100.com/upload/new/haveover.png" />
+						<view catchtap="taskclickevent" data-type="{{item.type}}" class="taskBtnview" wx:if="{{item.ifover==2}}">
+                            领取
+                        </view>
+
+                        <view catchtap="haveoverEvent" data-type="{{item.type}}" class="taskBtnview haveoverBtn" wx:if="{{item.ifover==1}}">
+                            {{(item.type==5 || item.type==6)?'明天再来':'已完成' }}
                         </view>
 
                         <button catchtap="catchtap" data-info="{{item.shareinfo}}" wx:if="{{item.ifShare && !item.ifover}}" id="shareBtn" open-type="share"></button>
@@ -221,7 +234,7 @@
         <view class="goldBody">
             <image src="https://duanju.58100.com/upload/new/duihuanbimask.png" />
             <view class="taskgoldtxt" style="bottom: 70rpx;">
-                {{duihuanbinum}}兑换币
+                {{lingquduihuanbinum}}兑换币
             </view>
         </view>
 

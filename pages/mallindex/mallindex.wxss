@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size: 750rpx 1334rpx;
     background-position: bottom left;
-    background-image: url('https://duanju.58100.com/upload/new/goldHome.png');
+    background-image: url('https://duanju.58100.com/upload/new/goldHome1.png');
 }
 
 /* 首页 */
@@ -144,7 +144,9 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .huowuBox view {
@@ -166,27 +168,27 @@
 }
 
 .lianyiqun {
-    top: 208rpx;
+    top: 258rpx;
     left: 82rpx;
 }
 
 .baobao {
-    top: 272rpx;
+    top: 320rpx;
     left: 182rpx;
 }
 
 .xiangshui {
-    top: 326rpx;
+    top: 376rpx;
     left: 192rpx;
 }
 
 .zhijin {
-    top: 180rpx;
+    top: 232rpx;
     left: 306rpx;
 }
 
 .shizhong {
-    top: 238rpx;
+    top: 292rpx;
     left: 316rpx;
 }
 
@@ -219,12 +221,18 @@
     position: relative;
 }
 
-image.youhuobikeling {
-    width: 120rpx;
-    height: 34rpx;
+.huobinumview {
+    height: 40rpx;
+    text-align: center;
+    padding: 0 8rpx;
+    font-size: 24rpx;
+    background: linear-gradient(#fefacd, #fed438);
+    color: #bb4e0f;
     position: absolute;
-    top: 0;
     right: -50rpx;
+    top: -10rpx;
+    line-height: 40rpx;
+    border-radius: 40rpx;
 }
 
 /* 好友列表 */
@@ -415,9 +423,10 @@ image.youhuobikeling {
     margin-left: 28rpx;
 }
 
-.haveoverBtn, .haveoverBtn image {
-    width: 172rpx;
-    height: 88rpx;
+.haveoverBtn {
+    background: linear-gradient(#E7E7E7,#A9A9A9,#CDCDCD);
+    box-shadow: 0px 8rpx 16rpx 0px #CDCDCD;
+	color: #696969;
 }
 
 /* 金币领取弹窗 */
@@ -495,66 +504,93 @@ image.youhuobikeling {
 @keyframes clickani1 {
     from {
         left: 314rpx;
-		bottom: 426rpx;
+        bottom: 426rpx;
     }
 
     to {
         left: 50rpx;
-		bottom: 556rpx;
+        bottom: 556rpx;
     }
 }
 
 @keyframes clickani2 {
     from {
         left: 314rpx;
-		bottom: 426rpx;
+        bottom: 426rpx;
     }
 
     to {
         left: 30rpx;
-		bottom: 396rpx;
+        bottom: 396rpx;
     }
 }
 
 @keyframes clickani3 {
     from {
         left: 314rpx;
-		bottom: 436rpx;
+        bottom: 436rpx;
     }
 
     to {
         left: 600rpx;
-		bottom: 556rpx;
+        bottom: 556rpx;
     }
 }
 
 @keyframes clickani4 {
     from {
-       left: 314rpx;
-		bottom: 426rpx;
+        left: 314rpx;
+        bottom: 426rpx;
     }
 
     to {
         left: 620rpx;
-		bottom: 396rpx;
+        bottom: 396rpx;
     }
 }
 
 /* 群弹窗 */
-.qunmaskbody,.qunmaskbody image{
-	width: 600rpx;
-	height: 876rpx;
+
+.qunmaskbody, .qunmaskbody image {
+    width: 600rpx;
+    height: 876rpx;
 }
 
-.qunmaskbody{
-	margin: 228rpx auto 0;
-	position: relative;
+.qunmaskbody {
+    margin: 228rpx auto 0;
+    position: relative;
 }
 
-.fuzhihot{
-	width: 400rpx;
-	height: 60rpx;
-	position: absolute;
-	left: 100rpx;
-	bottom: 120rpx;
+.fuzhihot {
+    width: 400rpx;
+    height: 60rpx;
+    position: absolute;
+    left: 100rpx;
+    bottom: 120rpx;
+}
+
+/* 库存热点点击 */
+
+.kucunhot {
+    width: 120rpx;
+    height: 180rpx;
+    position: absolute;
+    right: 30rpx;
+    bottom: 402rpx;
+}
+
+.duihuanbinumview {
+    width: 280rpx;
+    height: 90rpx;
+    text-align: center;
+    line-height: 30rpx;
+    background-repeat: no-repeat;
+    background-image: url('https://duanju.58100.com/upload/new/duihuanbinumbg.png');
+    background-size: 100%;
+    color: #ac632e;
+    font-size: 24rpx;
+    box-sizing: border-box;
+    padding: 16rpx 32rpx;
+    margin: 12rpx 0 0 30rpx;
+    z-index: 993;
 }

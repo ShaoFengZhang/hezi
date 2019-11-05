@@ -75,7 +75,7 @@ Page({
 		};
 
 		this.getloopfun();
-		
+		this.getuserglobnum();
 	},
 
 	onShow: function () {
@@ -175,6 +175,21 @@ Page({
 				_this.setData({
 					recordingArr: res.reward
 				})
+			}
+		})
+	},
+
+	//获取用户货币数目
+	getuserglobnum: function () {
+		let _this = this;
+		let url = loginApi.domin + '/home/index/query_currency';
+		loginApi.requestUrl(_this, url, "POST", {
+			uid: wx.getStorageSync('u_id')
+		}, function (res) {
+			if (res.status == 1) {
+				_this.setData({
+					usermoney: res.money 
+				});
 			}
 		})
 	},

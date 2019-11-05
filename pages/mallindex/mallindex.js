@@ -4,13 +4,9 @@ const app = getApp();
 Page({
 
     data: {
-		//用户售卖状态
-		zhuangtaiTxt:'',
-		zhuangtaiTxt:'售卖中',
-		zhuangtaiTxt:'收取兑换币吧',
 		//是否有货币可领
 		ifyouhuobikeling:0,
-		duihuanbinum:1,
+		lingquduihuanbinum:0.5,
 		userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -30,9 +26,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/kaiye.png',
                 "title": '店铺开业',
                 "destxt": '店铺成功开业奖励10货币',
-                "btnTxt": '领取奖励',
                 "ifover": 0,
-                'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt":'10货币',
 				"type":1
@@ -41,9 +35,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/huopingshangjia.png',
                 "title": '货品上架',
                 "destxt": '使用货币上架货品奖励20货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '20货币',
 				"type": 2
@@ -52,9 +44,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/kaizhangdaji.png',
                 "title": '开张大吉',
                 "destxt": '成功卖出第一份商品奖励30货币',
-				"btnTxt": '进行中',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '30货币',
 				"type": 3
@@ -63,9 +53,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/yaoqinghaoyou.png',
                 "title": '邀请好友',
                 "destxt": '每邀请一位新用户奖励30货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 1,
 				"txt": '30货币',
 				"type": 4,
@@ -75,9 +63,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/fangyingting.png',
                 "title": '放映厅',
                 "destxt": '完整观看小视屏奖励10货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '10货币',
 				"type": 5
@@ -86,9 +72,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/zaoqiqiandao.png',
                 "title": '早起签到',
                 "destxt": '每日登陆奖励10货币，早上5：00-8:00奖励会翻倍哦',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '10货币',
 				"type": 6
@@ -97,9 +81,7 @@ Page({
             //     "icon": 'https://duanju.58100.com/upload/new/haoyouzhaohui.png',
             //     "title": '好友召回',
             //     "destxt": '召回好友，奖励10货币',
-            //     "btnTxt": '去完成',
             //     "ifover": 0,
-            //     'event': '',
             //     "ifShare": 0,
 					// "txt": '10货币',
 					// "type": 7
@@ -108,9 +90,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/daguanggao.png',
                 "title": '打广告',
                 "destxt": '宣传你的小店让好友知道，奖励5货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 1,
 				"txt": '5货币',
 				"type": 8,
@@ -120,9 +100,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/jingshangzhidao.png',
                 "title": '经商之道',
                 "destxt": '阅读开店指南攻略，奖励15货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '15货币',
 				"type": 9
@@ -131,9 +109,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/jianchakucun.png',
                 "title": '检查库存',
                 "destxt": '8:00-12:00点击仓库查看一次库存流水，奖励5货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '5货币',
 				"type": 10
@@ -142,9 +118,7 @@ Page({
                 "icon": 'https://duanju.58100.com/upload/new/jianchakucun.png',
                 "title": '检查库存',
                 "destxt": '4：00-18:00点击仓库查看一次库存流水，奖励5货币',
-                "btnTxt": '去完成',
                 "ifover": 0,
-				'event': 'taskclickevent',
                 "ifShare": 0,
 				"txt": '5货币',
 				"type": 11
@@ -153,9 +127,7 @@ Page({
             //     "icon": 'https://duanju.58100.com/upload/new/dianmianzhuangxiu.png',
             //     "title": '店面装修',
             //     "destxt": '成功装扮店面，奖励20货币',
-            //     "btnTxt": '去完成',
             //     "ifover": 0,
-            //     'event': '',
             //     "ifShare": 0,
 			// 	"txt": '20货币',
 			// 	"type": 12
@@ -178,7 +150,10 @@ Page({
             },
 
         ],
+		//是否执行进货
 		ifjinhuo:0,
+		usermoney:0,
+		usergolbnum:0,
     },
 
     onLoad: function(options) {
@@ -197,6 +172,8 @@ Page({
                 hasUserInfo: true,
             });
         }
+
+		this.loadtaskdate()
 
 		// 广告
 		this.videoAd = null
@@ -224,6 +201,8 @@ Page({
 
     onShow: function() {
 		this.loadswiperData();
+		this.loadstatefun();
+		this.getuserglobnum();
     },
 
     onShareAppMessage: function(e) {
@@ -257,7 +236,6 @@ Page({
 			path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
         }
     },
-
 
     // 加载下一页
     nextpage: function() {
@@ -303,35 +281,28 @@ Page({
 			"uid":wx.getStorageSync("u_id")
         }, function(res) {
             if (res.status == 1) {
-                if(res.kaiye){
-					_this.data.taskArr[0].ifover=1;
-				}
-				if (res.kaiye) {
-					_this.data.taskArr[0].ifover = 1;
-				}
-				if (res.jinhuo) {
-					_this.data.taskArr[1].ifover = 1;
-				}
-				if (res.kaizhang) {
-					_this.data.taskArr[2].ifover = 1;
-				}
-				if (res.shipin==5) {
-					_this.data.taskArr[4].ifover = 1;
-				}
-				if (res.daguanggao) {
-					_this.data.taskArr[6].ifover = 1;
-				}
-				if (res.jingshang) {
-					_this.data.taskArr[7].ifover = 1;
-				}
-				if (res.qiandao) {
-					_this.data.taskArr[5].ifover = 1;
-				}
-
+				_this.data.taskArr[0].ifover = res.kaiye;
+				_this.data.taskArr[1].ifover = res.jinhuo;
+				_this.data.taskArr[2].ifover = res.kaizhang;
+				_this.data.taskArr[4].ifover = res.shipin==5?1:0;
+				_this.data.taskArr[5].ifover = res.qiandao;
+				_this.data.taskArr[6].ifover = res.daguanggao;
+				_this.data.taskArr[7].ifover = res.jingshang;
 				_this.setData({
 					taskArr: _this.data.taskArr
 				})
-            }
+				for(let key in res){
+					if (res[key]==2){
+						_this.setData({
+							ifyouhuobikeling:1,	
+						})
+						return;
+					}
+					_this.setData({
+						ifyouhuobikeling: 0,
+					})
+				}							
+            };
         })
     },
 
@@ -345,6 +316,103 @@ Page({
 				
 				_this.setData({
 					recordsArr: res.exchange,
+				});
+			}
+		})
+	},
+
+	//加载状态
+	loadstatefun:function(){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/sell_state';
+		loginApi.requestUrl(_this, url, "POST", {
+			uid:wx.getStorageSync("u_id")
+		}, function (res) {
+			if (res.status == 1) {
+				//0 没有货物
+				//1 售卖完成
+				//2 售卖中
+				if(res.state==0){
+					_this.setData({
+						zhuangtaiTxt:'缺货',
+						userState:0,
+					})
+				}
+				if (res.state == 1) {
+					_this.setData({
+						zhuangtaiTxt: '收取兑换币',
+						userState: 1,
+					})
+				}
+				if (res.state == 2) {
+					_this.setData({
+						zhuangtaiTxt: '售卖中',
+						userState: 2,
+						ifjinhuo: 1,
+					})
+				}
+
+
+			}
+		})
+	},
+
+	//收取兑换币
+	shouquduihuanbi:function(){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/receive';
+		loginApi.requestUrl(_this, url, "POST", {
+			uid:wx.getStorageSync("u_id"),
+		}, function (res) {
+			if (res.status == 1) {
+				_this.setData({
+					ifgetduihuanbi:1,
+				});
+				_this.loadstatefun();
+				_this.getuserglobnum();
+			}
+		})
+	},
+
+	//进货点击事件
+	jinhuoclickevent: function () {
+		if (this.data.userState==1 || this.data.userState==2){
+			this.data.userState == 1 ? util.toast('请先收取兑换币再进货') : util.toast('不要着急 商品还未售卖完')
+			return;
+		}
+
+		if (parseInt(this.data.usergolbnum)<60){
+			util.toast('货币不够不能进货；快去做任务领货币');
+			return;
+		}
+
+		let _this = this;
+		let url = loginApi.domin + '/home/index/stock';
+		loginApi.requestUrl(_this, url, "POST", {
+			uid: wx.getStorageSync('u_id')
+		}, function (res) {
+			if (res.status == 1) {
+				_this.setData({
+					ifjinhuo: 1,
+				});
+				_this.getuserglobnum();
+				_this.loadstatefun();
+				_this.loadtaskdate();
+			}
+		})
+	},
+
+	//获取用户货币数目
+	getuserglobnum:function(){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/query_currency';
+		loginApi.requestUrl(_this, url, "POST", {
+			uid:wx.getStorageSync('u_id')
+		}, function (res) {
+			if (res.status == 1) {
+				_this.setData({
+					usergolbnum: res.currency+'货币',
+					usermoney:res.money,
 				});
 			}
 		})
@@ -426,33 +494,24 @@ Page({
 		})
 	},
 
-	//进货点击事件
-	jinhuoclickevent:function(){
-		if (this.data.ifjinhuo){return}
-		this.setData({
-			ifjinhuo: !this.data.ifjinhuo,
-		})
-	},
-
-	//任务点击事件
+	//领取任务点击事件
 	taskclickevent:function(e){
 		let type = e.currentTarget.dataset.type;
-		let goldtxt = e.currentTarget.dataset.txt;
-		//店铺开业
-		if(type==1){
-			this.gettaskgold(type);
-		};
+		this.gettaskgold(type);
+	},
+
+	//去完成按钮事件
+	quwnchengfun: function (e) {
+		let type = e.currentTarget.dataset.type;
+
 		//货品上架
-		if(type==2){
-			this.showhidetaskview();
+		if (type == 2) {
+			util.toast('完成进货任务可领取')
 		}
+
 		//开张大吉
 		if (type == 3) {
-			if (this.data.taskArr[2].ifover==1){
-				this.gettaskgold(type);
-			}else{
-				util.toast('进行中~')
-			}
+			util.toast('成功售卖商品可领取')
 		}
 
 		//放映厅
@@ -467,28 +526,34 @@ Page({
 
 		//经商之道
 		if (type == 9) {
-			this.showhidetaskview();
+			util.toast('第一次查看攻略可领取')
 		}
 
 		//检查库存
 		if (type == 10) {
-			this.showhidetaskview();
+			util.toast('指定时间查看仓库可领取')
 		}
 
+		//检查库存
+		if (type == 11) {
+			util.toast('指定时间查看仓库可领取')
+		}
 	},
 
 	//完成任务获取奖励
 	gettaskgold: function (type){
+		util.loding('领取中')
 		let _this = this;
 		let url = loginApi.domin + '/home/index/complete';
 		loginApi.requestUrl(_this, url, "POST", {
 			"uid": wx.getStorageSync("u_id"),
 			"type":type
 		}, function (res) {
+			wx.hideLoading();
 			_this.loadtaskdate();
+			_this.getuserglobnum();
 			_this.setData({
 				goldtxt: res.currency.slice(1),
-				ifshowtaskview: 0,
 			})
 			_this.showhidegetglobview()
 		})
