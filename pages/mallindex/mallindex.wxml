@@ -9,10 +9,12 @@
             <swiper vertical="{{true}}" circular="{{true}}" autoplay="{{1}}" interval="{{2000}}" style="height:60rpx;">
                 <block wx:for="{{recordsArr}}" wx:key="index">
                     <swiper-item class='swiper-item'>
+
                         <view class="swipericon">
                             <image src="{{item.avatarurl}}" />
                         </view>
                         <view class="swiperTxt oneEllipsis">{{item.nickname}}兑换{{item.title}}</view>
+
                     </swiper-item>
                 </block>
             </swiper>
@@ -29,12 +31,13 @@
             </view>
         </view>
 
-		<view data-path="/pages/goods/goods" catchtap="navevent" class="duihuanbinumview">有{{usermoney}}个兑换币啦~快去商城兑换吧</view>
-
         <!-- 右侧导航小图标 -->
         <view class="rightNavIcon">
             <view data-path="{{item.path}}" catchtap="navevent" class="rigntSmallIcon" wx:for="{{rigntSmallIconArr}}" wx:key="{{index}}">
                 <image src="{{item.icon}}" />
+                <view class="userownglobnumview" wx:if="{{index==0}}">
+                    <text>{{usermoney}}</text>
+                </view>
             </view>
         </view>
 
@@ -42,15 +45,23 @@
 
         <view class="storeBottomView">
 
-			<view class="diamond" >
-				<image wx:if="{{userState==1}}" catchtap="shouquduihuanbi"  src="https://duanju.58100.com/upload/new/diamond.png" />
-			</view>
+            <!-- 领取兑换币 -->
+            <view class="diamond">
+                <image wx:if="{{userState==1}}" catchtap="shouquduihuanbi" src="https://duanju.58100.com/upload/new/diamond.png" />
+            </view>
 
             <view class="storeView" catchtap="showhideclickmask">
 
-				<view class="zhuangtaiTxt">{{zhuangtaiTxt}}</view>
+                <view class="zhuangtaiTxt">{{zhuangtaiTxt}}</view>
 
-				<!-- 货物 -->
+                <view class="progressBarView">
+                    <view class="progressbox">
+                        <view class="progress" style="width:{{218*percent/100}}rpx"></view>
+                    </view>
+                    <view class="progressnum">{{percent}}%</view>
+                </view>
+
+                <!-- 货物 -->
                 <view class="huowuBox {{ifjinhuo?'opcity1':null}}">
                     <view class="lianyiqun huowuitem">
                         <image style="width:44rpx;height:150rpx;" src="https://duanju.58100.com/upload/new/lianyiqun.png" />
@@ -76,24 +87,24 @@
                 <image src="https://duanju.58100.com/upload/new/xiaohaizi.png" />
             </view>
 
-			<!-- 下边三个按钮 -->
+            <!-- 下边三个按钮 -->
             <view class="bottomBtnview">
                 <view class="botBtn" catchtap="showhidefriendview">
                     <image src="https://duanju.58100.com/upload/new/mallhomefriendbtn1.png" />
                 </view>
                 <view class="botBtn" catchtap="showhidetaskview">
                     <image src="https://duanju.58100.com/upload/new/mallhomegetbensbtn1.png" />
-					
-					<view  wx:if="{{ifyouhuobikeling}}" class="huobinumview">有货币可领</view>
+
+                    <view wx:if="{{ifyouhuobikeling}}" class="huobinumview">有货币可领</view>
                 </view>
                 <view class="botBtn" catchtap="jinhuoclickevent">
                     <image src="https://duanju.58100.com/upload/new/mallhomegetgoodsbtn1.png" />
-					<view class="huobinumview">{{usergolbnum}}</view>
+                    <view class="huobinumview">{{usergolbnum}}</view>
                 </view>
             </view>
 
-			<!-- 库存热点 -->
-			<view class="kucunhot" data-path="/pages/currencyRecord/currencyRecord" catchtap="navevent"></view>
+            <!-- 库存热点 -->
+            <view class="kucunhot" data-path="/pages/currencyRecord/currencyRecord" catchtap="navevent"></view>
 
         </view>
 
@@ -151,10 +162,10 @@
                     <view wx:if="{{shownomorefriend}}" class="nofriend">没有更多朋友啦</view>
 
                     <!-- 暂时没有数据 -->
-                    <view class='nocom' wx:if="{{!friendArr.length}}">
+                    <!-- <view class='nocom' wx:if="{{!friendArr.length}}">
                         <image src='https://duanju.58100.com/upload/new/nodata.png' />
                         <view>暂时还没有数据亲~</view>
-                    </view>
+                    </view> -->
 
                 </scroll-view>
 
@@ -197,12 +208,12 @@
                             去完成
                         </view>
 
-						<view catchtap="taskclickevent" data-type="{{item.type}}" class="taskBtnview" wx:if="{{item.ifover==2}}">
+                        <view catchtap="taskclickevent" data-type="{{item.type}}" class="taskBtnview" wx:if="{{item.ifover==2}}">
                             领取
                         </view>
 
                         <view catchtap="haveoverEvent" data-type="{{item.type}}" class="taskBtnview haveoverBtn" wx:if="{{item.ifover==1}}">
-                            {{(item.type==5 || item.type==6)?'明天再来':'已完成' }}
+                            {{(item.type==5 || item.type==6 || item.type==8)?'明天再来':'已完成' }}
                         </view>
 
                         <button catchtap="catchtap" data-info="{{item.shareinfo}}" wx:if="{{item.ifShare && !item.ifover}}" id="shareBtn" open-type="share"></button>
@@ -216,11 +227,11 @@
         </view>
     </view>
 
-    <!-- 金币领取弹窗 -->
+    <!-- 货币领取弹窗 -->
     <view class="getgoldView" wx:if="{{ifgetgoldview}}" catchtap="showhidegetglobview">
 
         <view class="goldBody">
-            <image src="https://duanju.58100.com/upload/new/getgold.png" />
+            <image src="https://duanju.58100.com/upload/new/getgold2.png" />
             <view class="taskgoldtxt">
                 {{goldtxt}}
             </view>
@@ -228,11 +239,11 @@
 
     </view>
 
-	<!-- 领取兑换币弹窗 -->
-	<view class="getgoldView" wx:if="{{ifgetduihuanbi}}" catchtap="showhidegetduihuanbiview">
+    <!-- 领取兑换币弹窗 -->
+    <view class="getgoldView" wx:if="{{ifgetduihuanbi}}" catchtap="showhidegetduihuanbiview">
 
         <view class="goldBody">
-            <image src="https://duanju.58100.com/upload/new/duihuanbimask.png" />
+            <image src="https://duanju.58100.com/upload/new/duihuanbimask1.png" />
             <view class="taskgoldtxt" style="bottom: 70rpx;">
                 {{lingquduihuanbinum}}兑换币
             </view>
@@ -240,33 +251,58 @@
 
     </view>
 
-	<!-- 点击列表弹窗 -->
-	<view class="clickMask" wx:if="{{ifshowclickmask}}" catchtap="hideclickMask">
-		<view class="maskIcon maskIcon1" data-path="/pages/currencyRecord/currencyRecord" catchtap="navevent">
-			<image src="https://duanju.58100.com/upload/new/maskkucun.png" />
-		</view>
+    <!-- 点击列表弹窗 -->
+    <view class="clickMask" wx:if="{{ifshowclickmask}}" catchtap="hideclickMask">
+        <view class="maskIcon maskIcon1" data-path="/pages/currencyRecord/currencyRecord" catchtap="navevent">
+            <image src="https://duanju.58100.com/upload/new/maskkucun.png" />
+        </view>
 
-		<view class="maskIcon maskIcon2" catchtap="showhidequnmask">
-			<image src="https://duanju.58100.com/upload/new/maskqun.png" />
-		</view>
+        <view class="maskIcon maskIcon2" catchtap="showhidequnmask">
+            <image src="https://duanju.58100.com/upload/new/maskqun.png" />
+        </view>
 
 
-		<view class="maskIcon maskIcon3" data-path="/pages/linjidanOrder/linjidanOrder" catchtap="navevent">
-			<image src="https://duanju.58100.com/upload/new/maskorder.png" />
-		</view>
+        <view class="maskIcon maskIcon3" data-path="/pages/linjidanOrder/linjidanOrder" catchtap="navevent">
+            <image src="https://duanju.58100.com/upload/new/maskorder.png" />
+        </view>
 
-		<view class="maskIcon maskIcon4" data-path="/pages/gonglue/gonglue" catchtap="navevent">
-			<image src="https://duanju.58100.com/upload/new/maskgonglue.png" />
-		</view>
-	</view>
+        <view class="maskIcon maskIcon4" data-path="/pages/gonglue/gonglue" catchtap="navevent">
+            <image src="https://duanju.58100.com/upload/new/maskgonglue.png" />
+        </view>
+    </view>
 
-	<!-- 群弹窗 -->
-	<view class="getgoldView" wx:if="{{ifshowqunmaskview}}" catchtap="showhidequnmask">
+    <!-- 群弹窗 -->
+    <view class="getgoldView" wx:if="{{ifshowqunmaskview}}" catchtap="showhidequnmask">
 
         <view class="qunmaskbody">
             <image src="https://duanju.58100.com/upload/new/qunmaskview.png" />
 
-			<view class="fuzhihot" catchtap="fuzhiqunhao"></view>
+            <view class="fuzhihot" catchtap="fuzhiqunhao"></view>
+        </view>
+
+    </view>
+
+    <!-- 引导遮罩 -->
+    <view class="yindaomask" wx:if="{{firsttime}}" catchtap="stepclick">
+
+        <view class="yindao1" wx:if="{{yindaostep==1}}">
+            <image src="https://duanju.58100.com/upload/new/mallyindao6.png" />
+        </view>
+
+        <view class="yindao2" wx:if="{{yindaostep==2}}">
+            <image src="https://duanju.58100.com/upload/new/mallyindao7.png" />
+        </view>
+
+        <view class="yindao3" wx:if="{{yindaostep==3}}">
+            <image src="https://duanju.58100.com/upload/new/mallyindao8.png" />
+        </view>
+
+        <view class="yindao4" wx:if="{{yindaostep==4}}">
+            <image src="https://duanju.58100.com/upload/new/mallyindao9.png" />
+        </view>
+
+        <view class="yindao5" wx:if="{{yindaostep==5}}">
+            <image src="https://duanju.58100.com/upload/new/mallyindao10.png" />
         </view>
 
     </view>

@@ -5,23 +5,21 @@
     <view class="scrollView" style="height:{{topViewHeight}}px">
         <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="nextpage">
 
-			<view class="goodsListView">
+			<view class="goodsListView" >
 
-				<view class="goodsitem">
+				<view class="goodsitem" wx:for="{{goodsArr}}" wx:key="{{index}}">
 					<view class="goodsicon">
-						<image src="https://duanju.58100.com/newadmin/Uploads/201909/5d7082c7d79f1.png" />
+						<image src="{{item.pic}}" />
 						
-						<view class="baoyou">包邮</view>
+						<view class="baoyou" wx:if="{{item.shipping}}">包邮</view>
 					</view>
 
-					<view class="oneEllipsis" style="color:#282828;margin-bottom:12rpx;">鸡蛋20个</view>
+					<view class="oneEllipsis" style="color:#282828;margin-bottom:12rpx;">{{item.title}}</view>
 					<view class="priceview">
-						<view  style="color:#FE5A00;">20兑换币</view>
-						<view  style="color:#999999;">1人次/周</view>	
-						<!-- <view  style="color:#999999;">剩余10件</view>	 -->
+						<view  style="color:#FE5A00;">{{item.price}}兑换币</view>
 					</view>
 
-					<view class="exchangeBtn goodsBtn">
+					<view data-price="{{item.price}}" class="exchangeBtn goodsBtn" catchtap="exchangefun">
 						立即兑换
 					</view>
 
@@ -35,7 +33,7 @@
 
 
             <!-- 暂时没有数据 -->
-            <view class='nocom' wx:if="{{!recordArr.length}}">
+            <view class='nocom' wx:if="{{!goodsArr.length}}">
                 <image src='https://duanju.58100.com/upload/new/nodata.png' />
                 <view>暂时还没有数据亲~</view>
             </view>

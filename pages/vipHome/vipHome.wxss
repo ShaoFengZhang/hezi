@@ -44,7 +44,7 @@
 }
 
 .scroll-view{
-    width: 100%;
+    width: 980rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;

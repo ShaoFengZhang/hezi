@@ -15,6 +15,7 @@
     width: 318rpx;
     font-size: 28rpx;
     border-radius: 16rpx 16rpx 0 0;
+	margin-bottom: 82rpx;
 }
 
 .goodsicon image {

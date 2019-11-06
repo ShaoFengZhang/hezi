@@ -4,6 +4,8 @@ const app = getApp();
 Page({
 
     data: {
+		firsttime:0,
+		yindaostep:1,
 		//是否有货币可领
 		ifyouhuobikeling:0,
 		lingquduihuanbinum:0.5,
@@ -117,7 +119,7 @@ Page({
             {
                 "icon": 'https://duanju.58100.com/upload/new/jianchakucun.png',
                 "title": '检查库存',
-                "destxt": '4：00-18:00点击仓库查看一次库存流水，奖励5货币',
+                "destxt": '14：00-18:00点击仓库查看一次库存流水，奖励5货币',
                 "ifover": 0,
                 "ifShare": 0,
 				"txt": '5货币',
@@ -162,6 +164,8 @@ Page({
             topViewHeight: app.windowHeight - app.globalData.topbarHeight,
         });
 
+		_this.iffirstuser();
+
         this.page = 1;
         this.rows = 10;
         this.cangetData = true;
@@ -172,8 +176,6 @@ Page({
                 hasUserInfo: true,
             });
         }
-
-		this.loadtaskdate()
 
 		// 广告
 		this.videoAd = null
@@ -203,38 +205,50 @@ Page({
 		this.loadswiperData();
 		this.loadstatefun();
 		this.getuserglobnum();
+		this.loadtaskdate();
     },
 
     onShareAppMessage: function(e) {
 		console.log(e)
+		let title ='朋友，快帮我点一下，一起免费领鸡蛋，电饭锅和床上三件套啊！';
+		let path = `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`;
+		let img ='https://duanju.58100.com/upload/new/mallshare.png'
 		if (e.from != "menu") {
             let info = e.target.dataset.info;
-            if (info == "friendbtn") {
-                return {
-                    title: '领鸡蛋好友列表分享',
-                    path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
-                }
-            };
-			if (info == "yaoqinghaoyou"){
-				return {
-					title: '任务栏邀请好友按钮分享',
-					path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
-				}
-			}
+            // if (info == "friendbtn") {
+            //     return {
+			// 		title: title,
+			// 		path: path
+            //     }
+            // };
+			// if (info == "yaoqinghaoyou"){
+			// 	return {
+			// 		title: title,
+			// 		path: path
+			// 	}
+			// }
 
 			if (info == "daguanggao") {
 				this.gettaskgold(8, '5货币');
 				return {
-					title: '打广告按钮分享',
-					path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}`
+					title: title,
+					path: path,
+					imageUrl: img
 				}
+			}
+
+			return {
+				title: title,
+				path: path,
+				imageUrl: img
 			}
         }
 
-        return {
-            title: '领鸡蛋右上角胶囊按钮分享',
-			path: `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`
-        }
+		return {
+			title: title,
+			path: path,
+			imageUrl: img
+		}
     },
 
     // 加载下一页
@@ -288,11 +302,13 @@ Page({
 				_this.data.taskArr[5].ifover = res.qiandao;
 				_this.data.taskArr[6].ifover = res.daguanggao;
 				_this.data.taskArr[7].ifover = res.jingshang;
+				_this.data.taskArr[8].ifover = res.kucun1;
+				_this.data.taskArr[9].ifover = res.kucun2;
 				_this.setData({
 					taskArr: _this.data.taskArr
 				})
 				for(let key in res){
-					if (res[key]==2){
+					if (res[key] == 2 && key !='shipin'){
 						_this.setData({
 							ifyouhuobikeling:1,	
 						})
@@ -336,12 +352,14 @@ Page({
 					_this.setData({
 						zhuangtaiTxt:'缺货',
 						userState:0,
+						percent: res.percent
 					})
 				}
 				if (res.state == 1) {
 					_this.setData({
 						zhuangtaiTxt: '收取兑换币',
 						userState: 1,
+						percent: res.percent
 					})
 				}
 				if (res.state == 2) {
@@ -349,6 +367,7 @@ Page({
 						zhuangtaiTxt: '售卖中',
 						userState: 2,
 						ifjinhuo: 1,
+						percent: res.percent
 					})
 				}
 
@@ -359,17 +378,21 @@ Page({
 
 	//收取兑换币
 	shouquduihuanbi:function(){
+		util.loding('领取中~');
 		let _this = this;
 		let url = loginApi.domin + '/home/index/receive';
 		loginApi.requestUrl(_this, url, "POST", {
 			uid:wx.getStorageSync("u_id"),
 		}, function (res) {
 			if (res.status == 1) {
+				wx.hideLoading();
 				_this.setData({
 					ifgetduihuanbi:1,
+					lingquduihuanbinum: 0.5,
 				});
 				_this.loadstatefun();
 				_this.getuserglobnum();
+				_this.loadtaskdate();
 			}
 		})
 	},
@@ -385,7 +408,7 @@ Page({
 			util.toast('货币不够不能进货；快去做任务领货币');
 			return;
 		}
-
+		util.loding('正在进货');
 		let _this = this;
 		let url = loginApi.domin + '/home/index/stock';
 		loginApi.requestUrl(_this, url, "POST", {
@@ -398,6 +421,7 @@ Page({
 				_this.getuserglobnum();
 				_this.loadstatefun();
 				_this.loadtaskdate();
+				wx.hideLoading();
 			}
 		})
 	},
@@ -531,12 +555,12 @@ Page({
 
 		//检查库存
 		if (type == 10) {
-			util.toast('指定时间查看仓库可领取')
+			util.toast('按时间查看仓库可领取')
 		}
 
 		//检查库存
 		if (type == 11) {
-			util.toast('指定时间查看仓库可领取')
+			util.toast('按时间查看仓库可领取')
 		}
 	},
 
@@ -598,6 +622,38 @@ Page({
 		util.toast('已完成~')
 	},
 
+	//是否是第一次进来
+	iffirstuser:function(){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/diyici';
+		loginApi.requestUrl(_this, url, "POST", {
+			"uid": wx.getStorageSync("u_id"),
+		}, function (res) {
+			if(res.status==1){
+				_this.setData({
+					firsttime:res.diyici,
+				})
+			}
+		})
+	},
+
+	//引导完成加兑换币
+	addduihuanbi:function(){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/lingqu';
+		loginApi.requestUrl(_this, url, "POST", {
+			"uid": wx.getStorageSync("u_id"),
+		}, function (res) {
+			if (res.status == 1) {
+				_this.setData({
+					ifgetduihuanbi:1,
+					lingquduihuanbinum:1,
+				});
+				_this.getuserglobnum();
+			}
+		})
+	},
+
 	//上升动画函数
 	animationfun: function (n) {
 		let _this = this;
@@ -641,6 +697,19 @@ Page({
 			});
 			_this.animation = null;
 		}, 500)
+	},
+
+	//引导点击
+	stepclick:function(){
+		this.setData({
+			yindaostep: this.data.yindaostep+1
+		})
+		if (this.data.yindaostep>5){
+			this.setData({
+				firsttime:0,
+			});
+			this.addduihuanbi();
+		}
 	},
 
 	catchtap:function(){},

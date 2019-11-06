@@ -96,7 +96,7 @@ Page({
         }, function(res) {
             if (res.status == 1) {
                 _this.setData({
-                    isVip: res.vip,
+					ifVip: (res.vip || res.zhongshen),
                     endtime: res.end.slice(0, 10),
                     zhongshen: res.zhongshen,
                 });

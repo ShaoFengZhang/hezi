@@ -228,7 +228,7 @@ Page({
         }, function(res) {
             if (res.status == 1) {
                 _this.setData({
-                    ifVip: res.vip,
+					ifVip: (res.vip || res.zhongshen),
                     userScore: res.jifen,
                 });
             }

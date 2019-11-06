@@ -7,6 +7,8 @@ Page({
 		userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
+
+		usermoney:null,
 		ifstart:0,
 		animationData:null,
 		range_deg:0,
@@ -17,7 +19,7 @@ Page({
 				startAngle: 0,
 				endAngle: 45,
 				val: 1,
-				title:'300金币',
+				title:'300货币',
 			},
 			{
 				startAngle: 46,
@@ -35,7 +37,7 @@ Page({
 				startAngle: 136,
 				endAngle: 180,
 				val: 4,
-				title: '500金币',
+				title: '500货币',
 			},
 			{
 				startAngle: 181,
@@ -59,7 +61,7 @@ Page({
 				startAngle: 316,
 				endAngle: 360,
 				val: 8,
-				title: '100金币',
+				title: '100货币',
 			}
 		],
 	},
@@ -83,18 +85,35 @@ Page({
 	},
 
 	onShareAppMessage: function () {
-
+		let title = '朋友，快帮我点一下，一起免费领鸡蛋，电饭锅和床上三件套啊！';
+		let path = `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`;
+		let img = 'https://duanju.58100.com/upload/new/mallshare.png'
+		return {
+			title: title,
+			path: path,
+			imageUrl: img
+		}
 	},
 
 	//开始抽奖
 	startLottery:function(){
 		if (this.data.ifstart){
-			util.toast("正在抽奖~")
+			util.toast("正在抽奖~");
 			return
 		};
+
+		if (this.data.usermoney==null){
+			util.toast("请稍后~");
+			return
+		}
+		if (this.data.usermoney<1){
+			util.toast("兑换币不足，快去做任务兑换吧~");
+			return
+		}
 		this.setData({
 			animationData: null,
 			ifstart:1,
+			usermoney: this.data.usermoney-1,
 		});
 		this.animation = null;
 		this.getprize();
@@ -159,6 +178,7 @@ Page({
 				_this.prizeNum = res.name.id; //中哪一个奖
 				_this.prizeName=res.name.title;
 				_this.reversefun();
+				_this.getuserglobnum();
 			}else{
 				util.toast("网络问题，请重试~")
 			}
@@ -193,6 +213,8 @@ Page({
 			}
 		})
 	},
+
+	//
 
 	catchtap:function(){},
 

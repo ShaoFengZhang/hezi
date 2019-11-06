@@ -10,26 +10,42 @@ Page({
 
 			{
 				title: "半年会员",
-				nowprice: 14.9,
+				nowprice: 26.9,
 				// nowprice: 0.01,
-				oriprice: 49,
+				oriprice: 109.9,
 				type: 188,
 			},
 
 			{
-				title: "月会员",
-				nowprice: 4.9,
+				title: "周会员",
+				nowprice: 7.9,
 				// nowprice: 0.01,
-				oriprice: 9.9,
+				oriprice: 19.9,
+				type: 7,
+			},
+
+			{
+				title: "月会员",
+				nowprice: 16.9,
+				// nowprice: 0.01,
+				oriprice: 29.9,
 				type: 30,
 			},
 
 			{
 				title: "年会员",
-				nowprice: 29.9,
+				nowprice: 36.9,
 				// nowprice: 0.01,
-				oriprice: 109,
+				oriprice: 299.9,
 				type: 365,
+			},
+
+			{
+				title: "终身会员",
+				nowprice: 56.9,
+				// nowprice: 0.01,
+				oriprice: 1099,
+				type: 100,
 			},
 		],
 		nowIndex: 0,

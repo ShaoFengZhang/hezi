@@ -1,0 +1,27 @@
+<view class="bg">
+
+    <top-bar id="topBarView" comtype="{{4}}" pageTitle="{{'攻略'}}"></top-bar>
+
+	<view class="topbg" style="margin-top: {{topviewmargin}}px;">
+		<image src="https://duanju.58100.com/upload/new/gongluetop1.png" />
+
+		<view class="classtab">
+			<view class="{{imgindex==1?'classtxtselect':null}}" data-index='1' catchtap="switchTab">货币介绍</view>
+			<view class="{{imgindex==2?'classtxtselect':null}}" data-index='2' catchtap="switchTab">订单介绍</view>
+			<view class="{{imgindex==3?'classtxtselect':null}}" data-index='3' catchtap="switchTab">更多介绍</view>
+		</view>
+	</view>
+
+	<view class="botimgview" wx:if="{{imgindex==1}}">
+		<image style="width:100%;height:2046rpx;" src="https://duanju.58100.com/upload/new/gongluetab00.png" />
+	</view>
+
+	<view class="botimgview" wx:if="{{imgindex==2}}">
+		<image style="width:100%;height:882rpx;" src="https://duanju.58100.com/upload/new/gongluetab22.png" />
+	</view>
+
+	<view class="botimgview" wx:if="{{imgindex==3}}">
+		<image style="width:100%;height:2486rpx;" src="https://duanju.58100.com/upload/new/gongluetab33.png" />
+	</view>
+
+</view>

@@ -21,7 +21,8 @@
 		"pages/currencyRecord/currencyRecord",
 		"pages/goods/goods",
 		"pages/winRecord/winRecord",
-		"pages/linjidanOrder/linjidanOrder"
+		"pages/linjidanOrder/linjidanOrder",
+		"pages/gonglue/gonglue"
 	],
 	"window": {
 		"navigationStyle": "custom"

@@ -28,9 +28,11 @@
     overflow: hidden;
 }
 
-.swiper-item {
+swiper-item {
     display: flex;
     align-items: center;
+    line-height: 60rpx;
+    border-radius: 30rpx;
 }
 
 .swipericon, .swipericon image {
@@ -45,7 +47,7 @@
 }
 
 .swiperTxt {
-    width: 380rpx;
+    max-width: 380rpx;
 }
 
 .userInfoView {
@@ -82,6 +84,7 @@
     top: 14rpx;
     right: 24rpx;
     z-index: 993;
+    padding-top: 40rpx;
 }
 
 .rigntSmallIcon {
@@ -121,7 +124,7 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: bottom left;
-    background-image: url('https://duanju.58100.com/upload/new/mallHomeIcon1.png');
+    background-image: url('https://duanju.58100.com/upload/new/mallHomeIcon2.png');
     position: relative;
     z-index: 995;
 }
@@ -424,9 +427,9 @@
 }
 
 .haveoverBtn {
-    background: linear-gradient(#E7E7E7,#A9A9A9,#CDCDCD);
-    box-shadow: 0px 8rpx 16rpx 0px #CDCDCD;
-	color: #696969;
+    background: linear-gradient(#e7e7e7, #a9a9a9, #cdcdcd);
+    box-shadow: 0px 8rpx 16rpx 0px #cdcdcd;
+    color: #696969;
 }
 
 /* 金币领取弹窗 */
@@ -440,10 +443,13 @@
     background: rgba(40, 40, 40, 0.7);
     overflow: hidden;
     z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .goldBody {
-    margin: 240rpx auto 0;
+    /* margin: 240rpx auto 0; */
     position: relative;
 }
 
@@ -579,18 +585,72 @@
     bottom: 402rpx;
 }
 
-.duihuanbinumview {
-    width: 280rpx;
-    height: 90rpx;
-    text-align: center;
-    line-height: 30rpx;
-    background-repeat: no-repeat;
-    background-image: url('https://duanju.58100.com/upload/new/duihuanbinumbg.png');
+/* 兑换币数量view */
+
+.userownglobnumview {
+    width: 140rpx;
+    height: 64rpx;
+    position: absolute;
+    top: 0rpx;
+    left: -20rpx;
     background-size: 100%;
-    color: #ac632e;
-    font-size: 24rpx;
+    background-repeat: no-repeat;
+    background-image: url('https://duanju.58100.com/upload/new/userduihuanbinum.png');
+    font-size: 26rpx;
+    text-align: center;
     box-sizing: border-box;
-    padding: 16rpx 32rpx;
-    margin: 12rpx 0 0 30rpx;
-    z-index: 993;
+    padding-left: 30rpx;
+    padding-top: 22rpx;
+}
+
+.yindaomask {
+    width: 100%;
+    height: 100vh;
+    background: rgba(40, 40, 40, 0.83);
+    z-index: 9999;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.yindao1, .yindao2, .yindao3, .yindao4 {
+    width: 100%;
+    height: 1334rpx;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.yindaomask image {
+    width: 100%;
+    height: 1334rpx;
+    vertical-align: bottom;
+}
+
+/* 进度条 */
+
+.progressBarView {
+    width: 356rpx;
+    height: 36rpx;
+    margin: 40rpx 0 0 80rpx;
+    font-size: 24rpx;
+    color: #f8ec7b;
+    line-height: 36rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 10rpx;
+}
+
+.progressbox {
+    width: 218rpx;
+    height: 20rpx;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(233, 168, 171, 1) 100%);
+    border-radius: 6rpx;
+    margin-right: 10rpx;
+}
+
+.progress {
+    height: 20rpx;
+    background: linear-gradient(180deg, rgba(255, 202, 50, 1) 0%, rgba(255, 124, 0, 1) 100%);
+    border-radius: 8rpx 0px 0px 8rpx;
 }

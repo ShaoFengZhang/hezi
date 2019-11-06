@@ -40,8 +40,8 @@ Page({
                     type: 'inside',
                 },
 				{
-					icon: 'https://duanju.58100.com/upload/new/lingjidan.png',
-					text: '免费领',
+					icon: 'https://duanju.58100.com/upload/new/lingjidan2.png',
+					text: '鸡蛋免费领',
 					path: '/pages/mallindex/mallindex',
 					type: 'inside',
 				},
@@ -58,13 +58,7 @@ Page({
                     path: '',
                     type: 'without',
                     mini_id: "wxbf288d85dbc7d2a6",
-                },
-                {
-                    icon: 'https://duanju.58100.com/upload/new/jingqingqidai.png',
-                    text: '敬请期待',
-                    path: '',
-                    type: 'jingqingqidai',
-                },
+                }
             ]
         ],
     },
@@ -92,6 +86,12 @@ Page({
             if (options && options.uid) {
                 _this.fenxiangAddScore(options.uid);
             }
+			
+			if (options && options.uid){
+				if (options.uid != wx.getStorageSync('u_id') && options.type==6){
+					_this.lingjidanjiahuobifun(options.uid);
+				}
+			}
         });
 
         wx.getSystemInfo({
@@ -131,14 +131,25 @@ Page({
     // 判断分享加积分
     fenxiangAddScore: function(fuid) {
         let _this = this;
-        let fenxiangAddScoreUrl = loginApi.domin + '/home/index/fenxiangjifen';
-        loginApi.requestUrl(_this, fenxiangAddScoreUrl, "POST", {
+        let url = loginApi.domin + '/home/index/fenxiangjifen';
+		loginApi.requestUrl(_this, url, "POST", {
             'uid': wx.getStorageSync('u_id'),
             'openid': wx.getStorageSync('user_openID'),
             'fuid': fuid,
             'newuser': wx.getStorageSync('ifnewUser')
         }, function(res) {})
     },
+
+	//领鸡蛋加货币
+	lingjidanjiahuobifun:function(fuid){
+		let _this = this;
+		let url = loginApi.domin + '/home/index/shop_laxin';
+		loginApi.requestUrl(_this, url, "POST", {
+			'uid': wx.getStorageSync('u_id'),
+			'fuid': fuid,
+			'newuser': wx.getStorageSync('ifnewUser')
+		}, function (res) { })
+	},
 
     catchtap: function() {},
 

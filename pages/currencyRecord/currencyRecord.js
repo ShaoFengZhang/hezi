@@ -26,7 +26,14 @@ Page({
     },
 
     onShareAppMessage: function() {
-
+		let title = '朋友，快帮我点一下，一起免费领鸡蛋，电饭锅和床上三件套啊！';
+		let path = `/pages/index/index?uid=${wx.getStorageSync("u_id")}&type=6`;
+		let img = 'https://duanju.58100.com/upload/new/mallshare.png'
+		return {
+			title: title,
+			path: path,
+			imageUrl: img
+		}
     },
 
 	// 加载下一页

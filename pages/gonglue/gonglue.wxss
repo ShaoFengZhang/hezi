@@ -1,0 +1,35 @@
+.bg{
+	width: 100%;
+	min-height: 100vh;
+	background-color: #FFCA32;
+}
+
+.topbg,.topbg image{
+	width:750rpx;
+	height: 676rpx;
+	position: relative;
+}
+
+.classtab{
+	width: 630rpx;
+	height: 98rpx;
+	line-height: 98rpx;
+	color:#FFE9B5; 
+	font-size: 36rpx;
+	text-align: center;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	left: 60rpx;
+	bottom: 0;
+}
+
+.classtxtselect{
+	color: #fff;
+}
+
+.botimgview{
+	padding: 84rpx 0 0;
+	background-color: #FFFAE9;
+}
