@@ -76,31 +76,33 @@
         </view>
     </view>
 
-    <!-- 积分广告 -->
-    <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hidejsfenMask">
+    <!-- ios弹窗 -->
+    <view class="jifenMask" wx:if="{{ifshowMask}}" catchtap="hideadmask">
 
-        <view class="maskBody" style="height:{{huiyuanhide?580:710}}rpx">
+        <view class="maskBody" catchtap="adShow">
+            <image src="https://duanju.58100.com/upload/new/iosadview2.png" />
+        </view>
 
-            <view style="color:#D0021B;font-size:40rpx;margin-top:60rpx;">你的积分不够啦！</view>
-            <view style="color:#282828;font-size:28rpx;margin-top:12rpx;">你可以通过以下方式获得积分</view>
+    </view>
 
-            <view class="adView">
+    <!-- android弹窗 -->
+    <view class=" jifenMask huiyuanMask" wx:if="{{showPayView}}" catchtap="hideadmask">
 
-                <view class="shareBtn">
-                    <image src="https://duanju.58100.com/upload/new/sharebg.png" />
-                    <view style="width:158rpx;color:#666666;font-size:28rpx;">邀请好友 获取50积分</view>
-                    <button id="shareBtn" open-type="share"></button>
+        <view class="payView">
+
+            <view>升级VIP立即无限使用</view>
+
+            <view class="toppayitem ">
+
+                <view data-index="{{index}}" catchtap="{{item.type?'openVIP':'adShow'}}" class="payitem" wx:for="{{vipPriceArr}}" wx:key="{{index}}">
+
+                    <view class="paytitle">{{item.title}}</view>
+                    <view wx:if="{{item.type}}" style="color:#F80050;font-size:40rpx">¥{{item.nowprice}}</view>
+                    <view wx:if="{{!item.type}}" style="color:#F80050;font-size:40rpx">{{item.nowprice}}</view>
+                    <view wx:if="{{item.oriprice}}" style="color:#999;font-size:28rpx">原价{{item.oriprice}}元</view>
+
                 </view>
-
-                <view class="videoAd" catchtap="adShow">
-                    <image src="https://duanju.58100.com/upload/new/videoAd.png" />
-                    <view style="width:168rpx;color:#666666;font-size:28rpx;">观看广告视频 获取50积分</view>
-                </view>
-
-            </view>
-
-            <view class="maskBotAdView" catchtap="gotovip" wx:if="{{!huiyuanhide}}">
-                <image style="width:520rpx;height:156rpx;" src="https://duanju.58100.com/upload/new/maskBotAd.png" />
+            
             </view>
 
         </view>

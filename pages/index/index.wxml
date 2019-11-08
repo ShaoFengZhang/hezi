@@ -4,7 +4,7 @@
     <view class="TopSiperView">
         <swiper class="topSwiper" indicator-dots="{{false}}" autoplay="{{true}}" circular="{{true}}">
 
-			<block>
+            <block>
                 <swiper-item style="position: relative;" catchtap="goToPage" data-path="/pages/mallindex/mallindex">
                     <view class="swiperItem">
                         <image src="https://duanju.58100.com/upload/new/indexlingjidan.png" />
@@ -49,5 +49,5 @@
             </block>
         </swiper>
     </view>
-
+    
 </view>

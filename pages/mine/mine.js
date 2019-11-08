@@ -87,11 +87,11 @@ Page({
         });
     },
 
-    // 获取用户会员信心
+    // 获取用户会员信息
     getuserScore: function() {
         let _this = this;
-        let getuserScoreUrl = loginApi.domin + '/home/index/isvip';
-        loginApi.requestUrl(_this, getuserScoreUrl, "POST", {
+        let url = loginApi.domin + '/home/index/isvip';
+        loginApi.requestUrl(_this, url, "POST", {
             'uid': wx.getStorageSync('u_id'),
         }, function(res) {
             if (res.status == 1) {

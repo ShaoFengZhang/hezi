@@ -82,7 +82,9 @@ Page({
 		let price = e.currentTarget.dataset.price;
 		if (this.data.usermoney < price){
 			util.toast('兑换币不足~')
-		}
+		}else{
+            util.toast('程序员加紧开发中~')
+        }
 	},
 
 })

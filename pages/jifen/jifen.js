@@ -5,9 +5,8 @@ const app = getApp();
 Page({
 
 	data: {
-
 		videoAdShow: 1,
-
+		
 	},
 
 	onLoad: function (options) {

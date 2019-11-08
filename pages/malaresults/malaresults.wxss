@@ -80,7 +80,7 @@
     justify-content: center;
 }
 
-.maskBody {
+.maskBody1 {
     width: 600rpx;
     height: 710rpx;
     background: #fff;

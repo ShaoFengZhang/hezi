@@ -5,10 +5,25 @@ const app = getApp();
 Page({
 	data: {
 		srcDomin: loginApi.srcDomin,
+        isIos:1,
 	},
 
 	onLoad: function (options) {
-
+        let _this=this;
+        wx.getSystemInfo({
+            success(res) {
+                _this.pix = (res.screenWidth / 300);
+                if (res.system.slice(0, 3) == 'iOS') {
+                    _this.setData({
+                        isIos: 1,
+                    })
+                }else{
+                    _this.setData({
+                        isIos: 0,
+                    }) 
+                }
+            }
+        });
 	},
 
 	onShow: function (options) {
@@ -18,7 +33,6 @@ Page({
 	onShareAppMessage: function (e) {
 		return util.shareObj
 	},
-
 
 	catchtap: function () { },
 
@@ -45,7 +59,7 @@ Page({
 		}, function (res) {
 			if (res.status == 1) {
 				wx.navigateTo({
-					url: `/pages/cutout/cutout?peopleUrl=${res.imgurl}`,
+                    url: `/pages/cutout/cutout?peopleUrl=${res.imgurl}&isios=${_this.data.isIos}`,
 				});
 			}
 		})
@@ -62,18 +76,5 @@ Page({
 				data.contentArr[bindex].content[index].type}&width=${this.data.contentArr[bindex].content[index].img_width}&height=${this.data.contentArr[bindex].content[index].img_height}`,
 		})
 	},
-
-	// 判断分享加积分
-	fenxiangAddScore: function (fuid) {
-		let _this = this;
-		let fenxiangAddScoreUrl = loginApi.domin + '/home/index/fenxiangjifen';
-		loginApi.requestUrl(_this, fenxiangAddScoreUrl, "POST", {
-			'uid': wx.getStorageSync('u_id'),
-			'openid': wx.getStorageSync('user_openID'),
-			'fuid': fuid,
-			'newuser': wx.getStorageSync('ifnewUser')
-		}, function (res) {
-		})
-	}
 
 })

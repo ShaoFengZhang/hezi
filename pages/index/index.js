@@ -5,6 +5,7 @@ const app = getApp();
 Page({
 
     data: {
+        isios:1,
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -102,6 +103,10 @@ Page({
                         huiyuanhide: 1,
                         itemArr: _this.data.itemArr
                     });
+                }else{
+                    _this.setData({
+                        isios: 0,
+                    }); 
                 }
             }
         });
@@ -124,7 +129,7 @@ Page({
 			itemname: title,
 		});
         wx.navigateTo({
-            url: path,
+            url: `${path}?isios=${this.data.isios}`,
         });
     },
 
